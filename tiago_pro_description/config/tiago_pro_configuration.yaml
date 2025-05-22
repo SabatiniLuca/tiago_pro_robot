@@ -58,3 +58,7 @@ torque_estimation:
   description: 'The arm has torque estimation'
   choices: ['False', 'True']
   default_value: 'False'
+has_teleop_arms:
+  description: 'The robot has teleop two extra arms'
+  choices: ['False', 'True']
+  default_value: 'False'

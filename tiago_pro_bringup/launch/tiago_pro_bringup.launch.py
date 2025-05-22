@@ -40,6 +40,7 @@ class LaunchArguments(LaunchArgumentsBase):
     camera_model: DeclareLaunchArgument = TiagoProArgs.camera_model
     laser_model: DeclareLaunchArgument = TiagoProArgs.laser_model
     torque_estimation: DeclareLaunchArgument = TiagoProArgs.torque_estimation
+    has_teleop_arms: DeclareLaunchArgument = TiagoProArgs.has_teleop_arms
 
     use_sim_time: DeclareLaunchArgument = CommonArgs.use_sim_time
     namespace: DeclareLaunchArgument = CommonArgs.namespace
@@ -58,7 +59,8 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
                           "ft_sensor_left": launch_args.ft_sensor_left,
                           "torque_estimation": launch_args.torque_estimation,
                           "use_sim_time": launch_args.use_sim_time,
-                          "is_public_sim": launch_args.is_public_sim
+                          "is_public_sim": launch_args.is_public_sim,
+                          "has_teleop_arms": launch_args.has_teleop_arms,
                           })
 
     launch_description.add_action(default_controllers)
@@ -103,7 +105,8 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
                           "torque_estimation": launch_args.torque_estimation,
                           "namespace": launch_args.namespace,
                           "use_sim_time": launch_args.use_sim_time,
-                          "is_public_sim": launch_args.is_public_sim
+                          "is_public_sim": launch_args.is_public_sim,
+                          "has_teleop_arms": launch_args.has_teleop_arms,
                           })
 
     launch_description.add_action(robot_state_publisher)
