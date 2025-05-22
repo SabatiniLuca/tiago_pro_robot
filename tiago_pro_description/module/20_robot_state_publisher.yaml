@@ -13,4 +13,5 @@ robot_state_publisher:
           tool_changer_left:=@tool_changer_left@
           camera_model:=@camera_model@
           laser_model:=@laser_model@
-          torque_estimation:=@has_torque_estimation@"
+          torque_estimation:=@has_torque_estimation@
+          has_teleop_arms:=@has_teleop_arms@"

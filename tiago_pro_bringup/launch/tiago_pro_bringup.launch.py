@@ -74,7 +74,9 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
                           "end_effector_left": launch_args.end_effector_left,
                           "wrist_model_right": launch_args.wrist_model_right,
                           "wrist_model_left": launch_args.wrist_model_left,
-                          "use_sim_time": launch_args.use_sim_time})
+                          "use_sim_time": launch_args.use_sim_time,
+                          "has_teleop_arms": launch_args.has_teleop_arms
+                          })
 
     launch_description.add_action(play_motion2)
 

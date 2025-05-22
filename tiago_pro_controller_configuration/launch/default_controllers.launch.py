@@ -108,27 +108,24 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
         function=configure_side_controllers, args=['left'],
         condition=LaunchConfigurationNotEquals('arm_type_left', 'no-arm')))
 
-    launch_description.add_action(
-        OpaqueFunction(function=add_teleop_if_enabled))
+    teleop_arm_left_controller = include_scoped_launch_py_description(
+        pkg_name='pal_sea_arm_controller_configuration',
+        paths=['launch', 'arm_controller.launch.py'],
+        launch_arguments={"side": "teleop_left"},
+        condition=IfCondition(LaunchConfiguration("has_teleop_arms"))
+    )
+
+    teleop_arm_right_controller = include_scoped_launch_py_description(
+        pkg_name='pal_sea_arm_controller_configuration',
+        paths=['launch', 'arm_controller.launch.py'],
+        launch_arguments={"side": "teleop_right"},
+        condition=IfCondition(LaunchConfiguration("has_teleop_arms"))
+    )
+
+    launch_description.add_action(teleop_arm_left_controller)
+    launch_description.add_action(teleop_arm_right_controller)
 
     return
-
-
-def add_teleop_if_enabled(context, *args, **kwargs):
-    has_teleop_arms = read_launch_argument("has_teleop_arms", context)
-    teleop_arm_left_controller = None
-    teleop_arm_right_controller = None
-    if has_teleop_arms == 'True':
-        teleop_arm_left_controller = include_scoped_launch_py_description(
-            pkg_name='pal_sea_arm_controller_configuration',
-            paths=['launch', 'arm_controller.launch.py'],
-            launch_arguments={"side": "teleop_left"})
-        teleop_arm_right_controller = include_scoped_launch_py_description(
-            pkg_name='pal_sea_arm_controller_configuration',
-            paths=['launch', 'arm_controller.launch.py'],
-            launch_arguments={"side": "teleop_right"})
-
-    return [teleop_arm_left_controller, teleop_arm_right_controller]
 
 
 def configure_side_controllers(context, end_effector_side='right', *args, **kwargs):
