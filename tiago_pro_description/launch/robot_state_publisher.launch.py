@@ -42,6 +42,8 @@ class LaunchArguments(LaunchArgumentsBase):
     end_effector_left: DeclareLaunchArgument = TiagoProArgs.end_effector_left
     ft_sensor_right: DeclareLaunchArgument = TiagoProArgs.ft_sensor_right
     ft_sensor_left: DeclareLaunchArgument = TiagoProArgs.ft_sensor_left
+    ft_sensor_teleop_left: DeclareLaunchArgument = TiagoProArgs.ft_sensor_teleop_left
+    ft_sensor_teleop_right: DeclareLaunchArgument = TiagoProArgs.ft_sensor_teleop_right
     wrist_model_right: DeclareLaunchArgument = TiagoProArgs.wrist_model_right
     wrist_model_left: DeclareLaunchArgument = TiagoProArgs.wrist_model_left
     camera_model: DeclareLaunchArgument = TiagoProArgs.camera_model
@@ -86,6 +88,8 @@ def create_robot_description_param(context, *args, **kwargs):
         'end_effector_left': read_launch_argument('end_effector_left', context),
         'ft_sensor_right': read_launch_argument('ft_sensor_right', context),
         'ft_sensor_left': read_launch_argument('ft_sensor_left', context),
+        'ft_sensor_teleop_right': read_launch_argument('ft_sensor_teleop_right', context),
+        'ft_sensor_teleop_left': read_launch_argument('ft_sensor_teleop_left', context),
         'wrist_model_right': read_launch_argument('wrist_model_right', context),
         'wrist_model_left': read_launch_argument('wrist_model_left', context),
         'camera_model': read_launch_argument('camera_model', context),

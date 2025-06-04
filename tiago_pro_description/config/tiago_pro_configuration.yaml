@@ -42,6 +42,14 @@ ft_sensor_left:
   description: 'FT sensor model left arm'
   choices: ['ati', 'rokubi', 'no-ft-sensor']
   default_value: 'no-ft-sensor'
+ft_sensor_teleop_right:
+  description: 'FT sensor model right teleop arm'
+  choices: ['ati', 'rokubi', 'no-ft-sensor']
+  default_value: 'no-ft-sensor'
+ft_sensor_teleop_left:
+  description: 'FT sensor model left teleop arm'
+  choices: ['ati', 'rokubi', 'no-ft-sensor']
+  default_value: 'no-ft-sensor'
 base_type:
   description: 'Base type'
   choices: ['omni_base']

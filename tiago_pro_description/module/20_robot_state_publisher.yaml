@@ -7,6 +7,8 @@ robot_state_publisher:
           end_effector_left:=@end_effector_left@
           ft_sensor_right:=@ft_sensor_right@
           ft_sensor_left:=@ft_sensor_left@
+          ft_sensor_teleop_right:=@ft_sensor_teleop_right@
+          ft_sensor_teleop_left:=@ft_sensor_teleop_left@
           wrist_model_right:=@wrist_model_right@
           wrist_model_left:=@wrist_model_left@
           tool_changer_right:=@tool_changer_right@
