@@ -140,6 +140,10 @@ def setup_arm_controllers(context, arm_side, *args, **kwargs):
     joint_space_controller = setup_arm_side_controller(
         context, "joint_space_controller", arm_side, load_gains_separately=True
     )
+    
+    cartesian_force_controller = setup_arm_side_controller(
+        context, "cartesian_force_controller", arm_side,
+    )
 
     return [
         cartesian_vel_ee_frame,
@@ -148,6 +152,7 @@ def setup_arm_controllers(context, arm_side, *args, **kwargs):
         joint_space_controller,
         cartesian_space_controller_ee_frame,
         cartesian_space_controller_robot_frame,
+        cartesian_force_controller,
     ]
 
 
