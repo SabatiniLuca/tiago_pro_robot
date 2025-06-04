@@ -74,8 +74,32 @@
         <xacro:ros2_control_pal_pro_gripper name="gripper_right" reduction="1.0" />
       </xacro:if>
     </xacro:if>
-  </xacro:macro>
 
+    <xacro:if value="${has_teleop_arms}">
+      <xacro:ros2_control_arm name="arm_teleop_right_1" reduction="121.0" offset_value="${arm_right_1_joint_offset}" use_sea_transmission="${torque_estimation}" />
+      <xacro:ros2_control_arm name="arm_teleop_right_2" reduction="121.0" offset_value="${arm_right_2_joint_offset}" use_sea_transmission="${torque_estimation}" />
+      <xacro:ros2_control_arm name="arm_teleop_right_3" reduction="101.0" offset_value="${arm_right_3_joint_offset}" use_sea_transmission="${torque_estimation}" />
+      <xacro:ros2_control_arm name="arm_teleop_right_4" reduction="101.0" offset_value="${arm_right_4_joint_offset}" use_sea_transmission="${torque_estimation}" />
+      <xacro:ros2_control_arm name="arm_teleop_right_5" reduction="101.0" offset_value="${arm_right_5_joint_offset}" use_sea_transmission="${torque_estimation}" />
+      <xacro:ros2_control_arm name="arm_teleop_right_6" reduction="101.0" offset_value="${arm_right_6_joint_offset}" use_sea_transmission="${torque_estimation}" />
+      <xacro:ros2_control_arm name="arm_teleop_right_7" reduction="101.0" offset_value="${arm_right_7_joint_offset}" use_sea_transmission="${torque_estimation}" />
+      
+      <xacro:ros2_control_arm name="arm_teleop_left_1" reduction="121.0" offset_value="${arm_left_1_joint_offset}" use_sea_transmission="${torque_estimation}" />
+      <xacro:ros2_control_arm name="arm_teleop_left_2" reduction="121.0" offset_value="${arm_left_2_joint_offset}" use_sea_transmission="${torque_estimation}" />
+      <xacro:ros2_control_arm name="arm_teleop_left_3" reduction="101.0" offset_value="${arm_left_3_joint_offset}" use_sea_transmission="${torque_estimation}" />
+      <xacro:ros2_control_arm name="arm_teleop_left_4" reduction="101.0" offset_value="${arm_left_4_joint_offset}" use_sea_transmission="${torque_estimation}" />
+      <xacro:ros2_control_arm name="arm_teleop_left_5" reduction="101.0" offset_value="${arm_left_5_joint_offset}" use_sea_transmission="${torque_estimation}" />
+      <xacro:ros2_control_arm name="arm_teleop_left_6" reduction="101.0" offset_value="${arm_left_6_joint_offset}" use_sea_transmission="${torque_estimation}" />
+      <xacro:ros2_control_arm name="arm_teleop_left_7" reduction="101.0" offset_value="${arm_left_7_joint_offset}" use_sea_transmission="${torque_estimation}" />
+      <xacro:if value="${end_effector_right == 'pal-pro-gripper'}">
+        <!-- pal-pro-gripper -->
+        <xacro:ros2_control_pal_pro_gripper name="gripper_teleop_right" reduction="1.0" />
+      </xacro:if>
+      <xacro:if value="${end_effector_left == 'pal-pro-gripper'}">
+        <xacro:ros2_control_pal_pro_gripper name="gripper_teleop_left" reduction="1.0" />
+      </xacro:if>
+    </xacro:if>
+  </xacro:macro>
 
   <xacro:macro name="ros2_control_head_offset">
     <!-- head -->
@@ -83,7 +107,7 @@
     <xacro:ros2_control_head_joint name="head_2" reduction="1.0" offset_value="${head_2_joint_offset}" />
   </xacro:macro>
 
-  <xacro:macro name="tiago_pro_ros2_control" params="use_sim_time:=^|false">
+  <xacro:macro name="tiago_pro_ros2_control" params="use_sim_time:=^|false has_teleop_arms:=^|false">
 
     <xacro:arg name="arm_type_left" default="tiago-pro"/>
     <xacro:arg name="arm_type_right" default="tiago-pro"/>
