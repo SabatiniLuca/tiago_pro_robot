@@ -121,9 +121,23 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
         launch_arguments={"side": "teleop_right"},
         condition=IfCondition(LaunchConfiguration("has_teleop_arms"))
     )
+    gravity_compensation_teleop_left_controller = include_scoped_launch_py_description(
+        pkg_name='pal_sea_arm_controller_configuration',
+        paths=['launch', 'gravity_compensation_controller.launch.py'],
+        launch_arguments={"side": "teleop_left"},
+        condition=IfCondition(LaunchConfiguration("has_teleop_arms")))
+
+    gravity_compensation_teleop_right_controller = include_scoped_launch_py_description(
+        pkg_name='pal_sea_arm_controller_configuration',
+        paths=['launch', 'gravity_compensation_controller.launch.py'],
+        launch_arguments={"side": "teleop_right"},
+        condition=IfCondition(LaunchConfiguration("has_teleop_arms")))
 
     launch_description.add_action(teleop_arm_left_controller)
     launch_description.add_action(teleop_arm_right_controller)
+    launch_description.add_action(gravity_compensation_teleop_left_controller)
+    launch_description.add_action(gravity_compensation_teleop_right_controller)
+
 
     return
 
