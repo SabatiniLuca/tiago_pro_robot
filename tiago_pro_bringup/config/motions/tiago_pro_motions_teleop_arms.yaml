@@ -13,64 +13,51 @@
           description: Go home with the two teleop arms
 
       offer_teleop_arms:
-        joints: [torso_lift_joint, arm_teleop_left_1_joint, arm_teleop_left_2_joint, arm_teleop_left_3_joint, arm_teleop_left_4_joint, arm_teleop_left_5_joint, arm_teleop_left_6_joint, arm_teleop_left_7_joint, arm_teleop_right_1_joint, arm_teleop_right_2_joint, arm_teleop_right_3_joint, arm_teleop_right_4_joint, arm_teleop_right_5_joint, arm_teleop_right_6_joint, arm_teleop_right_7_joint]
+        joints: [arm_teleop_left_1_joint, arm_teleop_left_2_joint, arm_teleop_left_3_joint, arm_teleop_left_4_joint, arm_teleop_left_5_joint, arm_teleop_left_6_joint, arm_teleop_left_7_joint, arm_teleop_right_1_joint, arm_teleop_right_2_joint, arm_teleop_right_3_joint, arm_teleop_right_4_joint, arm_teleop_right_5_joint, arm_teleop_right_6_joint, arm_teleop_right_7_joint]
         times_from_start: [0.0]
-        positions: [0.14, -0.25843, -0.57522, 0.50314, -2.0337, 0.0, 1.0543, 1.5708, 0.25843, -0.57522, -0.50314, -2.0337, 0.0, 1.0543, -1.5708]
+        positions: [-0.25843, -0.57522, 0.50314, -2.0337, 0.0, 1.0543, 1.5708, 0.25843, -0.57522, -0.50314, -2.0337, 0.0, 1.0543, -1.5708]
         meta:
           name: offer teleop arms
           usage: demo
           description: offer with the two teleop arms
 
       offer_teleop_left:
-        joints: [torso_lift_joint, arm_teleop_left_1_joint, arm_teleop_left_2_joint, arm_teleop_left_3_joint, arm_teleop_left_4_joint, arm_teleop_left_5_joint, arm_teleop_left_6_joint, arm_teleop_left_7_joint]
+        joints: [arm_teleop_left_1_joint, arm_teleop_left_2_joint, arm_teleop_left_3_joint, arm_teleop_left_4_joint, arm_teleop_left_5_joint, arm_teleop_left_6_joint, arm_teleop_left_7_joint]
         times_from_start: [0.0]
-        positions: [0.14, -0.25843, -0.57522, 0.50314, -2.0337, 0.0, 1.0543, 1.5708]
+        positions: [-0.25843, -0.57522, 0.50314, -2.0337, 0.0, 1.0543, 1.5708]
         meta:
           name: offer_left
           usage: demo
           description: offer_left   
 
       offer_teleop_right:
-        joints: [torso_lift_joint, arm_teleop_right_1_joint, arm_teleop_right_2_joint, arm_teleop_right_3_joint, arm_teleop_right_4_joint, arm_teleop_right_5_joint, arm_teleop_right_6_joint, arm_teleop_right_7_joint]
+        joints: [arm_teleop_right_1_joint, arm_teleop_right_2_joint, arm_teleop_right_3_joint, arm_teleop_right_4_joint, arm_teleop_right_5_joint, arm_teleop_right_6_joint, arm_teleop_right_7_joint]
         times_from_start: [0.0]
-        positions: [0.14, 0.25843, -0.57522, -0.50314, -2.0337, 0.0, 1.0543, -1.5708]
+        positions: [0.25843, -0.57522, -0.50314, -2.0337, 0.0, 1.0543, -1.5708]
         meta:
           name: offer_right teleop arm
           usage: demo
           description: offer_right teleop arm
 
-      horizontal_teleop_arms:
-        joints: [torso_lift_joint, arm_teleop_left_1_joint, arm_teleop_left_2_joint, arm_teleop_left_3_joint, arm_teleop_left_4_joint, arm_teleop_left_5_joint, arm_teleop_left_6_joint, arm_teleop_left_7_joint, arm_teleop_right_1_joint, arm_teleop_right_2_joint, arm_teleop_right_3_joint, arm_teleop_right_4_joint, arm_teleop_right_5_joint, arm_teleop_right_6_joint, arm_teleop_right_7_joint, head_1_joint, head_2_joint]       
-        positions: [0.23, 0.7167, -1.83, 0.1158, -2.35, 0.0, -1.2, 0.0, -0.7167, -1.83, -0.1158, -2.35, -0.0, -1.2, 0.0, 0.7, 0.0,
-          0.23, 1.75, -1.83, 0.47, -2.35, 0.0, -1.20, 0.0, -1.75, -1.83, -0.47, -2.35, -0.0, -1.20, 0.0, -0.7, 0.0,
-          0.23, 1.75, -1.27, 0.0, 0.0, 0.0, 0.0, 0.0, -1.75, -1.27, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,]
-        times_from_start: [0.0, 3.0, 8.0]
+      starting_teleop_master_arms:
+        joints: [arm_teleop_left_1_joint, arm_teleop_left_2_joint, arm_teleop_left_3_joint, arm_teleop_left_4_joint, arm_teleop_left_5_joint, arm_teleop_left_6_joint, arm_teleop_left_7_joint, arm_teleop_right_1_joint, arm_teleop_right_2_joint, arm_teleop_right_3_joint, arm_teleop_right_4_joint, arm_teleop_right_5_joint, arm_teleop_right_6_joint, arm_teleop_right_7_joint]
+        times_from_start: [0.0, 5.0]
+        positions: [1.8557, -1.5919, 0.35538, -2.2, 0.10524, -1.5976, 0.0, -1.8614, -1.6008, -0.34892, -1.9818, 0.10153, -1.5829, 0.0,
+                    2.8, -1.81, -0.56, -2.20, -2.6, 0.91, -0.26, -2.8, -1.81, 0.56, -2.20, 2.6, 0.91, -0.26]
         meta:
-          name: Horizontal
-          usage: Demo
-          description: horizontal teleop arms
+          name: Starting pose for master arm
+          usage: demo
+          description: Starting pose for master arm
 
-      horizontal_teleop_right:
-          joints: [torso_lift_joint, arm_teleop_right_1_joint, arm_teleop_right_2_joint, arm_teleop_right_3_joint, arm_teleop_right_4_joint, arm_teleop_right_5_joint, arm_teleop_right_6_joint, arm_teleop_right_7_joint]
-          positions: [0.23, -0.7167, -1.83, -0.1158, -2.35, -0.0, -1.2, 0.0,
-            0.23, -1.75, -1.83, -0.47, -2.35, -0.0, -1.20, 0.0, 
-            0.23, -1.75, -1.27, 0.0, 0.0, 0.0, 0.0, 0.0,]
-          times_from_start: [0.0, 3.0, 8.0]
-          meta:
-            name: Horizontal Right teleop arm
-            usage: Demo
-            description: horizontal right teleop arm
-
-      horizontal_teleop_left:
-        joints: [torso_lift_joint,  arm_teleop_left_1_joint, arm_teleop_left_2_joint, arm_teleop_left_3_joint, arm_teleop_left_4_joint, arm_teleop_left_5_joint, arm_teleop_left_6_joint, arm_teleop_left_7_joint]
-        positions: [0.23, 0.7167, -1.83, 0.1158,-2.35,0.0, -1.2, 0.0,
-          0.23, 1.75, -1.83, 0.47, -2.35, 0.0, -1.20, 0.0, 
-          0.23, 1.75, -1.27, 0.0, 0.0, 0.0, 0.0, 0.0,]
-        times_from_start: [0.0, 3.0, 8.0]
+      starting_teleop_slave_arms:
+        joints: [torso_lift_joint, arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_left_5_joint, arm_left_6_joint, arm_left_7_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, arm_right_5_joint, arm_right_6_joint, arm_right_7_joint]
+        times_from_start: [0.0, 5.0]
+        positions: [0.14, 1.8557, -1.5919, 0.35538, -2.2, 0.10524, -1.5976, 0.0, -1.8614, -1.6008, -0.34892, -1.9818, 0.10153, -1.5829, 0.0,
+                    0.27, 2.8, -1.81, -0.56, -2.20, -2.6, 0.91, -0.26, -2.8, -1.81, 0.56, -2.20, 2.6, 0.91, -0.26]
         meta:
-          name: Horizontal Left teleop arm
-          usage: Demo
-          description: horizontal left teleop arm
+          name: Starting pose for slave arm
+          usage: demo
+          description: Starting pose for slave arm
 
       close_teleop_left:
         joints: [gripper_teleop_left_finger_joint]
@@ -125,3 +112,4 @@
           name: Open Right Gripper
           usage: demo
           description: 'Open right gripper'
+

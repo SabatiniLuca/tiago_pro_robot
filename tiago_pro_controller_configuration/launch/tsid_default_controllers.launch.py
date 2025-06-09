@@ -161,8 +161,11 @@ def setup_arm_side_controller(
 ):
 
     arm_prefix = f"arm_{arm_side}"
-
     side_controller_name = f"{arm_prefix}_{controller_name}"
+    
+    if controller_name == "cartesian_force_controller":
+        arm_prefix = arm_side
+        side_controller_name = f"arm_{arm_prefix}_{controller_name}"
     remappings = {"ARM_SIDE_PREFIX": arm_prefix}
 
     param_file = os.path.join(
