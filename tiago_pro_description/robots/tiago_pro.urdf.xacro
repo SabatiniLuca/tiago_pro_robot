@@ -43,6 +43,12 @@
   <!-- False, True -->
   <xacro:arg name="tool_changer_left" default="True" />
 
+    <!-- False, True -->
+  <xacro:arg name="tool_changer_teleop_right" default="True" />
+
+  <!-- False, True -->
+  <xacro:arg name="tool_changer_teleop_left" default="True" />
+
   <!-- pal-pro-gripper custom-->
   <xacro:arg name="end_effector_left" default="pal-pro-gripper" />
 
@@ -54,6 +60,12 @@
 
   <!-- no-ft-sensor, rokubi -->
   <xacro:arg name="ft_sensor_right" default="no-ft-sensor" />
+
+  <!-- no-ft-sensor, rokubi -->
+  <xacro:arg name="ft_sensor_teleop_left" default="no-ft-sensor" />
+
+  <!-- no-ft-sensor, rokubi -->
+  <xacro:arg name="ft_sensor_teleop_right" default="no-ft-sensor" />
 
   <!-- realsense-d435 -->
   <xacro:arg name="camera_model" default="realsense-d435" />
@@ -93,12 +105,16 @@
   <xacro:property name="arm_type_teleop_right" value="$(arg arm_type_teleop_right)" />
   <xacro:property name="tool_changer_left" value="$(arg tool_changer_left)" />
   <xacro:property name="tool_changer_right" value="$(arg tool_changer_right)" />
+  <xacro:property name="tool_changer_teleop_left" value="$(arg tool_changer_teleop_left)" />
+  <xacro:property name="tool_changer_teleop_right" value="$(arg tool_changer_teleop_right)" />
   <xacro:property name="wrist_model_left" value="$(arg wrist_model_left)" />
   <xacro:property name="wrist_model_right" value="$(arg wrist_model_right)" />
   <xacro:property name="end_effector_left" value="$(arg end_effector_left)" />
   <xacro:property name="end_effector_right" value="$(arg end_effector_right)" />
   <xacro:property name="ft_sensor_left" value="$(arg ft_sensor_left)" />
   <xacro:property name="ft_sensor_right" value="$(arg ft_sensor_right)" />
+  <xacro:property name="ft_sensor_teleop_left" value="$(arg ft_sensor_teleop_left)" />
+  <xacro:property name="ft_sensor_teleop_right" value="$(arg ft_sensor_teleop_right)" />
   <xacro:property name="camera_model" value="$(arg camera_model)" />
   <xacro:property name="calibration_offset_dir" value="${arg calibration_offset_dir}"/>
   <xacro:property name="is_public_sim" value="$(arg is_public_sim)" />
@@ -115,8 +131,12 @@
   <xacro:property name="has_teleop_arm_left" value="${arm_type_teleop_left not in ['no-arm']}"/>
 
   <xacro:property name="has_ft_sensor_right" value="${ft_sensor_right not in ['no-ft-sensor']}"/>
+  <xacro:property name="has_teleop_ft_sensor_right" value="${ft_sensor_teleop_right not in ['no-ft-sensor']}"/>
+  <xacro:property name="has_teleop_ft_sensor_left" value="${ft_sensor_teleop_left not in ['no-ft-sensor']}"/>
   <xacro:property name="has_end_effector_right" value="${end_effector_right not in ['no-end-effector']}" />
   <xacro:property name="end_effector_right_link" value="${'wrist_right_ft_tool_link' if has_ft_sensor_right else 'arm_right_tool_link'}" />
+  <xacro:property name="end_effector_teleop_right_link" value="${'wrist_teleop_right_ft_tool_link' if has_teleop_ft_sensor_right else 'arm_teleop_right_tool_link'}" />
+  <xacro:property name="end_effector_teleop_left_link" value="${'wrist_teleop_left_ft_tool_link' if has_teleop_ft_sensor_left else 'arm_teleop_left_tool_link'}" />
   <xacro:property name="end_effector_right_name" value="gripper_right" />
 
   <!-- Properties check -->
@@ -144,6 +164,12 @@
   <xacro:if value="${ft_sensor_right not in ['no-ft-sensor', 'rokubi', 'ati']}">
     <xacro:wrong_ft_sensor_right />
   </xacro:if>
+  <xacro:if value="${ft_sensor_teleop_left not in ['no-ft-sensor', 'rokubi', 'ati']}">
+    <xacro:wrong_ft_sensor_teleop_left />
+  </xacro:if>
+  <xacro:if value="${ft_sensor_teleop_right not in ['no-ft-sensor', 'rokubi', 'ati']}">
+    <xacro:wrong_ft_sensor_teleop_right />
+  </xacro:if>  
   <xacro:if value="${laser_model not in ['no-laser', 'sick-571']}">
     <xacro:wrong_laser_model />
   </xacro:if>
@@ -205,7 +231,7 @@
   </xacro:if>
 
   <!-- Force Torque sensor -->
-  <xacro:if value="${has_ft_sensor_right or has_ft_sensor_left}">
+  <xacro:if value="${has_ft_sensor_right or has_ft_sensor_left or has_teleop_ft_sensor_right or has_teleop_ft_sensor_left}">
     <xacro:include filename="$(find pal_urdf_utils)/urdf/ft_sensors/ft_sensor.urdf.xacro" />
     <xacro:include filename="$(find pal_urdf_utils)/urdf/ft_sensors/ft_sensor.gazebo.xacro" />
   </xacro:if>
@@ -272,19 +298,19 @@
 
   <!-- Teleop arms without FT -->
   <xacro:if value="${has_teleop_arms}">
-    <xacro:pal_sea_arm name="arm_teleop_right" parent="torso_lift_link" arm_type="${arm_type_teleop_right}" wrist_model="${wrist_model_right}" tool_changer="${tool_changer_right}" reflect="1" joint_reflect="1" arm_1_offset="${arm_right_1_joint_offset}" arm_2_offset="${arm_right_2_joint_offset}" arm_3_offset="${arm_right_3_joint_offset}" arm_4_offset="${arm_right_4_joint_offset}" arm_5_offset="${arm_right_5_joint_offset}" arm_6_offset="${arm_right_6_joint_offset}" arm_7_offset="${arm_right_7_joint_offset}">
+    <xacro:pal_sea_arm name="arm_teleop_right" parent="torso_lift_link" arm_type="${arm_type_teleop_right}" wrist_model="${wrist_model_right}" tool_changer="${tool_changer_teleop_right}" reflect="1" joint_reflect="1" arm_1_offset="${arm_right_1_joint_offset}" arm_2_offset="${arm_right_2_joint_offset}" arm_3_offset="${arm_right_3_joint_offset}" arm_4_offset="${arm_right_4_joint_offset}" arm_5_offset="${arm_right_5_joint_offset}" arm_6_offset="${arm_right_6_joint_offset}" arm_7_offset="${arm_right_7_joint_offset}">
       <origin xyz="$(arg arm_x) ${-12*$(arg arm_y)} $(arg arm_z)" rpy="$(arg arm_roll) ${-11.0*$(arg arm_pitch)} ${-3.14159 -$(arg arm_yaw)}"/>
     </xacro:pal_sea_arm>
-    <xacro:pal_sea_arm name="arm_teleop_left" parent="torso_lift_link" arm_type="${arm_type_teleop_left}" wrist_model="${wrist_model_left}" tool_changer="${tool_changer_left}" reflect="1" joint_reflect="-1" arm_1_offset="${arm_left_1_joint_offset}" arm_2_offset="${arm_left_2_joint_offset}" arm_3_offset="${arm_left_3_joint_offset}" arm_4_offset="${arm_left_4_joint_offset}" arm_5_offset="${arm_left_5_joint_offset}" arm_6_offset="${arm_left_6_joint_offset}" arm_7_offset="${arm_left_7_joint_offset}">
+    <xacro:pal_sea_arm name="arm_teleop_left" parent="torso_lift_link" arm_type="${arm_type_teleop_left}" wrist_model="${wrist_model_left}" tool_changer="${tool_changer_teleop_left}" reflect="1" joint_reflect="-1" arm_1_offset="${arm_left_1_joint_offset}" arm_2_offset="${arm_left_2_joint_offset}" arm_3_offset="${arm_left_3_joint_offset}" arm_4_offset="${arm_left_4_joint_offset}" arm_5_offset="${arm_left_5_joint_offset}" arm_6_offset="${arm_left_6_joint_offset}" arm_7_offset="${arm_left_7_joint_offset}">
       <origin xyz="$(arg arm_x) ${-10.0*$(arg arm_y)} $(arg arm_z)" rpy="$(arg arm_roll) $(arg arm_pitch) $(arg arm_yaw)"/>
     </xacro:pal_sea_arm>  
-
-    <!-- <xacro:if value="${has_end_effector_left}">
-      <xacro:pal_sea_arm_end_effector name="gripper_teleop_left" parent="arm_teleop_left_tool_link" type="${end_effector_left}" tool_changer="${tool_changer_left}" reflect="-1"/>
+    
+    <xacro:if value="${has_teleop_ft_sensor_right}">
+      <xacro:ft_sensor type="${ft_sensor_teleop_right}" name="wrist_teleop_right" parent="arm_teleop_right_tool_link"/>
     </xacro:if>
-    <xacro:if value="${has_end_effector_right}">
-      <xacro:pal_sea_arm_end_effector name="gripper_teleop_right" parent="arm_teleop_right_tool_link" type="${end_effector_right}" tool_changer="${tool_changer_right}" reflect="1"/>
-    </xacro:if> -->
+    <xacro:if value="${has_teleop_ft_sensor_left}">
+      <xacro:ft_sensor type="${ft_sensor_teleop_left}" name="wrist_teleop_left" parent="arm_teleop_left_tool_link"/>
+    </xacro:if>
 
   </xacro:if>
 

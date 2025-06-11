@@ -94,7 +94,15 @@
         <xacro:ros2_control_arm name="arm_teleop_left_6" reduction="101.0" offset_value="${arm_left_6_joint_offset}" use_sea_transmission="${torque_estimation}" />
         <xacro:ros2_control_arm name="arm_teleop_left_7" reduction="101.0" offset_value="${arm_left_7_joint_offset}" use_sea_transmission="${torque_estimation}" />
         </xacro:if>
+      <xacro:if value="${has_teleop_ft_sensor_right}">
+        <xacro:include filename="$(find pal_urdf_utils)/urdf/ft_sensors/ftsensor.ros2_control.xacro"/>
+        <xacro:ros2_control_force_torque_sensor name="wrist_teleop_right_ft_sensor"/>
+      </xacro:if>
 
+      <xacro:if value="${has_teleop_ft_sensor_left}">
+        <xacro:include filename="$(find pal_urdf_utils)/urdf/ft_sensors/ftsensor.ros2_control.xacro"/>
+        <xacro:ros2_control_force_torque_sensor name="wrist_teleop_left_ft_sensor"/>
+      </xacro:if>
     </xacro:if>
   </xacro:macro>
 
