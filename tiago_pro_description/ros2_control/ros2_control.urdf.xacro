@@ -132,7 +132,6 @@
     <xacro:property name="has_arm_left" value="${arm_type_left != 'no-arm'}" />
     <xacro:property name="has_arm_right" value="${arm_type_right != 'no-arm'}" />
     <xacro:property name="can_device_name" value="can_device" />
-
     <xacro:include filename="$(find omni_base_description)/urdf/wheels/wheel.ros2_control.xacro" />
 
     <xacro:include filename="$(find tiago_pro_description)/urdf/torso/torso.ros2_control.xacro" />
