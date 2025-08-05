@@ -2,6 +2,14 @@
 Changelog for package tiago_pro_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'tpe/update_gripper_range' into 'humble-devel'
+  Update close motion for pal pro gripper
+  See merge request robots/tiago_pro_robot!153
+* Update close motion for pal pro gripper
+* Contributors: thomaspeyrucain
+
 1.30.0 (2025-08-01)
 -------------------
 * launch the module not bringup.launch
