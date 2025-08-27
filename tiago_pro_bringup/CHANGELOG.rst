@@ -2,6 +2,9 @@
 Changelog for package tiago_pro_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 1.30.1 (2025-08-05)
 -------------------
 * Merge branch 'tpe/update_gripper_range' into 'humble-devel'
