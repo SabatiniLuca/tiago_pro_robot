@@ -62,7 +62,7 @@
   <xacro:arg name="is_public_sim" default="false"/>
   <xacro:arg name="is_multiple" default="false"/>
   <xacro:arg name="namespace" default=""/>
-  <xacro:arg name="description_calibration_dir" default="$(find tiago_pro_description)/urdf"/>
+  <xacro:arg name="arm_calibration_dir" default="$(find tiago_pro_description)/urdf/calibration"/>
   <xacro:arg name="extrinsic_calibration_dir" default="$(find tiago_pro_description)/urdf"/>
   <xacro:arg name="arm_x" default="0.08976" />
   <xacro:arg name="arm_y" default="0.15918" />
@@ -89,7 +89,7 @@
   <xacro:property name="ft_sensor_left" value="$(arg ft_sensor_left)" />
   <xacro:property name="ft_sensor_right" value="$(arg ft_sensor_right)" />
   <xacro:property name="camera_model" value="$(arg camera_model)" />
-  <xacro:property name="description_calibration_dir" value="${arg description_calibration_dir}"/>
+  <xacro:property name="arm_calibration_dir" value="${arg arm_calibration_dir}"/>
   <xacro:property name="is_public_sim" value="$(arg is_public_sim)" />
 
   <xacro:property name="has_arm_left" value="${arm_type_left not in ['no-arm']}"/>
@@ -171,7 +171,7 @@
   <xacro:include filename="$(find tiago_pro_description)/urdf/torso/torso.urdf.xacro" />
 
   <!-- Calibration constants -->
-  <xacro:include filename="$(arg description_calibration_dir)/calibration_constants.urdf.xacro" />
+  <xacro:include filename="$(arg arm_calibration_dir)/arm_calibration.urdf.xacro" />
 
   <!-- Arm -->
   <xacro:if value="${has_arm_right or has_arm_left}">
