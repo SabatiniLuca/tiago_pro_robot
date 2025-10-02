@@ -83,7 +83,11 @@ def create_play_motion_filename(context):
     motions_folder = os.path.join(pkg_share_dir, 'config', 'motions')
     base_motions_file = 'tiago_pro_motions_no_arms.yaml'
 
-    if wrist_model_right != wrist_model_left:
+    if 'short-wrist' in (wrist_model_right, wrist_model_left):
+        get_logger("play_motion2").warning(
+            "The 'short-wrist' model is not supported for play_motion2. "
+            "Loaded motions will not include arm movements.")
+    elif wrist_model_right != wrist_model_left:
         get_logger("play_motion2").error(
             "Wrist models must be the same for both arms")
     # both arms
@@ -113,6 +117,13 @@ def create_play_motion_filename(context):
 
     motion_yamls = [os.path.join(motions_folder, f) for f in motion_files]
     motion_yamls.extend(head_motions)
+
+    # Safety check for not throwing error if some file does not exist
+    for f in motion_yamls.copy():
+        if not os.path.exists(f):
+            get_logger("play_motion2").warning(f"Motion file '{f}' does not exist. Skipping...")
+            motion_yamls.remove(f)
+
     combined_yaml = merge_param_files(motion_yamls)
     motion_planner_file = f"motion_planner{hw_suffix}.yaml"
 
