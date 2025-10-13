@@ -2,6 +2,11 @@
 Changelog for package tiago_pro_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* preparing pkg for public release
+* Contributors: andreacapodacqua
+
 1.31.0 (2025-08-27)
 -------------------
 

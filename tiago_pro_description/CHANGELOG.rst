@@ -2,6 +2,11 @@
 Changelog for package tiago_pro_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* preparing pkg for public release
+* Contributors: andreacapodacqua
+
 1.31.0 (2025-08-27)
 -------------------
 * remove realsense overlay
