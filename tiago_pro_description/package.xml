@@ -18,7 +18,7 @@
   <exec_depend>omni_base_description</exec_depend>
   <exec_depend>tiago_pro_head_description</exec_depend>
   <exec_depend>pal_sea_arm_description</exec_depend>
-  <exec_depend>allegro_hand_description</exec_depend>
+  <exec_depend condition="$PAL_DISTRO >= alum">allegro_hand_description</exec_depend>
   <exec_depend>pal_urdf_utils</exec_depend>
   <exec_depend>xacro</exec_depend>
   <exec_depend condition="$PAL_DISTRO >= alum">hector_gazebo_plugins</exec_depend>
