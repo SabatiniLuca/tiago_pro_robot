@@ -2,8 +2,8 @@
 Changelog for package tiago_pro_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.31.1 (2025-10-13)
+-------------------
 * preparing pkg for public release
 * Contributors: andreacapodacqua
 
