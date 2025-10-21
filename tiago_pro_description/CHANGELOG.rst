@@ -2,8 +2,8 @@
 Changelog for package tiago_pro_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.31.2 (2025-10-21)
+-------------------
 * Add urdf calibration args for the arm
 * Remove tiago pro controller config dependency
 * Contributors: Aina Irisarri, David ter Kuile
