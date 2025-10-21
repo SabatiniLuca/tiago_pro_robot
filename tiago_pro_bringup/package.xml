@@ -20,6 +20,7 @@
   <exec_depend>joy_teleop</exec_depend>
   <exec_depend>twist_mux</exec_depend>
   <exec_depend>play_motion2</exec_depend>
+  <exec_depend>play_motion2_cli</exec_depend>
   <exec_depend condition="$PAL_DISTRO >= alum">collision_aware_joint_trajectory_wrapper</exec_depend>
   <exec_depend>pal_pro_gripper_wrapper</exec_depend>
 
