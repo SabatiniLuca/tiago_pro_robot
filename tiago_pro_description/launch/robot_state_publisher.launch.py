@@ -14,6 +14,8 @@
 
 import os
 from pathlib import Path
+import tempfile
+
 
 from ament_index_python.packages import get_package_share_directory
 
@@ -25,6 +27,7 @@ from launch_param_builder import load_xacro
 
 from launch_pal.arg_utils import LaunchArgumentsBase, read_launch_argument
 from launch_pal.robot_arguments import CommonArgs
+from launch_pal import calibration_utils
 from tiago_pro_description.launch_arguments import TiagoProArgs
 
 from dataclasses import dataclass
@@ -92,6 +95,18 @@ def create_robot_description_param(context, *args, **kwargs):
         'namespace': read_launch_argument('namespace', context),
         'is_public_sim': read_launch_argument('is_public_sim', context),
     }
+
+    calibration_dir = tempfile.TemporaryDirectory()
+    calibration_dir_path = Path(calibration_dir.name)
+
+    input_dir = Path(get_package_share_directory(
+        "tiago_pro_description")) / "urdf" / "calibration"
+
+    calibration_xacro_args = calibration_utils.apply_urdf_calibration(
+        input_dir, calibration_dir_path)
+
+    xacro_input_args.update(calibration_xacro_args)
+
     robot_description = load_xacro(xacro_file_path, xacro_input_args)
 
     return [SetLaunchConfiguration('robot_description', robot_description)]

@@ -87,7 +87,7 @@
     <xacro:arg name="ft_sensor_left" default="no-ft-sensor"/>
     <xacro:arg name="ft_sensor_right" default="no-ft-sensor"/>
 
-    <xacro:arg name="description_calibration_dir" default="$(find tiago_pro_description)/urdf/calibration" />
+    <xacro:arg name="arm_calibration_dir" default="$(find tiago_pro_description)/urdf/calibration" />
     <!-- TODO-->
 
     <xacro:property name="arm_type_left" value="$(arg arm_type_left)" />
@@ -115,7 +115,7 @@
       <xacro:include filename="$(find allegro_hand_description)/urdf/allegro_hand.ros2_control.xacro" />
     </xacro:if>
     <!-- calibration offsets -->
-    <xacro:include filename="$(arg description_calibration_dir)/calibration_constants.urdf.xacro" />
+    <xacro:include filename="$(arg arm_calibration_dir)/arm_calibration.urdf.xacro" />
 
     <!-- Simulation -->
     <xacro:if value="$(arg use_sim_time)">
