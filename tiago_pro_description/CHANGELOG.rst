@@ -2,6 +2,11 @@
 Changelog for package tiago_pro_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Fix humble tests excluding allegro hand end-effector
+* Contributors: Noel Jimenez
+
 1.32.0 (2025-10-23)
 -------------------
 
