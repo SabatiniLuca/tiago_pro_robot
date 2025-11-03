@@ -12,9 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os
 from pathlib import Path
 
 from ament_index_python.packages import get_package_share_directory
+from launch.actions import DeclareLaunchArgument
 from tiago_pro_description.launch_arguments import TiagoProArgs
 
 from urdf_test.xacro_test import define_xacro_test
@@ -40,10 +42,23 @@ wrist_args_right = (
     TiagoProArgs.ft_sensor_right,
 )
 
-gripper_args = (
-    TiagoProArgs.end_effector_right,
-    TiagoProArgs.end_effector_left,
-)
+
+def exclude_allegro_hand(end_effector):
+    _choices = getattr(end_effector, 'choices', None)
+    _name = getattr(end_effector, 'name', None)
+    filtered_choices = [c for c in _choices if 'allegro-hand' not in str(c)]
+    end_effector = DeclareLaunchArgument(name=_name, choices=filtered_choices)
+    return end_effector
+
+
+if not os.environ.get('PAL_DISTRO'):
+    end_effector_left = exclude_allegro_hand(TiagoProArgs.end_effector_left)
+    end_effector_right = exclude_allegro_hand(TiagoProArgs.end_effector_right)
+    gripper_args = (end_effector_left, end_effector_right)
+else:
+    end_effector_left = TiagoProArgs.end_effector_left
+    end_effector_right = TiagoProArgs.end_effector_right
+    gripper_args = (end_effector_left, end_effector_right)
 
 test_xacro_base = define_xacro_test(
     xacro_file_path, arm_args, TiagoProArgs.base_type)
@@ -55,6 +70,6 @@ test_xacro_ee = define_xacro_test(
 test_xacro_ee = define_xacro_test(
     xacro_file_path, TiagoProArgs.arm_type_right, wrist_args_right)
 test_xacro_ee = define_xacro_test(
-    xacro_file_path, TiagoProArgs.end_effector_left, wrist_args_left)
+    xacro_file_path, end_effector_left, wrist_args_left)
 test_xacro_ee = define_xacro_test(
-    xacro_file_path, TiagoProArgs.end_effector_right, wrist_args_right)
+    xacro_file_path, end_effector_right, wrist_args_right)
