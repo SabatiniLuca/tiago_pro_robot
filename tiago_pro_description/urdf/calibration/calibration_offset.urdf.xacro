@@ -27,4 +27,4 @@
 	<xacro:property name="head_1_joint_offset" value="0.0" />
   	<xacro:property name="head_2_joint_offset" value="0.0" />
 
-</robot>ll
+</robot>
