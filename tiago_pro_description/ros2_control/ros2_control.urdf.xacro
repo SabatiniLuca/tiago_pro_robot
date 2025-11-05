@@ -76,6 +76,13 @@
     </xacro:if>
   </xacro:macro>
 
+  <xacro:macro name="ros2_control_head">
+    <!-- head -->
+    <xacro:ros2_control_head_joint name="head_1" offset_value="${head_1_joint_offset}" />
+    <xacro:ros2_control_head_joint name="head_2" offset_value="${head_2_joint_offset}" />
+  </xacro:macro>
+
+
   <xacro:macro name="tiago_pro_ros2_control" params="use_sim_time:=^|false">
 
     <xacro:arg name="arm_type_left" default="tiago-pro"/>
@@ -115,7 +122,7 @@
       <xacro:include filename="$(find allegro_hand_description)/urdf/allegro_hand.ros2_control.xacro" />
     </xacro:if>
     <!-- calibration offsets -->
-    <xacro:include filename="$(arg arm_calibration_dir)/arm_calibration.urdf.xacro" />
+    <xacro:include filename="$(arg arm_calibration_dir)/calibration_offset.urdf.xacro" />
 
     <!-- Simulation -->
     <xacro:if value="$(arg use_sim_time)">
