@@ -12,7 +12,7 @@
 
       close_left_half:
         joints: [gripper_left_finger_joint]
-        positions: [0.03969]
+        positions: [0.5]
         times_from_start: [0.5]
         meta:
           name: Close Left Gripper Half
@@ -21,7 +21,7 @@
 
       open_left:
         joints: [gripper_left_finger_joint]
-        positions: [0.07938]
+        positions: [0.935]
         times_from_start: [0.5]
         meta:
           name: Open Left Gripper
