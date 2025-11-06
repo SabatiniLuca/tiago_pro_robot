@@ -3,7 +3,7 @@
     motions:
       close_right:
         joints: [gripper_right_finger_joint]
-        positions: [0.935]
+        positions: [0.0]
         times_from_start: [0.5]
         meta:
           name: Close Right Gripper
@@ -12,7 +12,7 @@
 
       close_right_half:
         joints: [gripper_right_finger_joint]
-        positions: [0.5]
+        positions: [0.03969]
         times_from_start: [0.5]
         meta:
           name: Close Right Gripper Half
@@ -21,7 +21,7 @@
 
       open_right:
         joints: [gripper_right_finger_joint]
-        positions: [0.0]
+        positions: [0.07938]
         times_from_start: [0.5]
         meta:
           name: Open Right Gripper
