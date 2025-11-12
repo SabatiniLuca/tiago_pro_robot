@@ -2,6 +2,12 @@
 Changelog for package tiago_pro_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* changing max and mid value
+* changing max and mid value
+* Contributors: susannamastromauro
+
 1.32.1 (2025-11-03)
 -------------------
 * Fix humble tests excluding allegro hand end-effector

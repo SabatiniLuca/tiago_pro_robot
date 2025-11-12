@@ -2,6 +2,13 @@
 Changelog for package tiago_pro_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* changing max and mid value
+* changing gripper values motion
+* fixing gripper limits
+* Contributors: susannamastromauro
+
 1.32.1 (2025-11-03)
 -------------------
 
