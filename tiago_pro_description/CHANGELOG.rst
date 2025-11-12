@@ -2,8 +2,8 @@
 Changelog for package tiago_pro_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.32.2 (2025-11-12)
+-------------------
 * changing max and mid value
 * changing max and mid value
 * Contributors: susannamastromauro
