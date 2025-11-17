@@ -55,6 +55,12 @@
   <!-- pal-pro-gripper, custom-->
   <xacro:arg name="end_effector_right" default="pal-pro-gripper" />
 
+  <!-- no-ed-effector -->
+  <xacro:arg name="end_effector_teleop_right" default="no-ed-effector" />
+
+  <!-- no-ed-effector -->
+  <xacro:arg name="end_effector_teleop_left" default="no-ed-effector" />
+
   <!-- no-ft-sensor, rokubi -->
   <xacro:arg name="ft_sensor_left" default="no-ft-sensor" />
 
@@ -111,6 +117,8 @@
   <xacro:property name="wrist_model_right" value="$(arg wrist_model_right)" />
   <xacro:property name="end_effector_left" value="$(arg end_effector_left)" />
   <xacro:property name="end_effector_right" value="$(arg end_effector_right)" />
+  <xacro:property name="end_effector_teleop_left" value="$(arg end_effector_teleop_left)" />
+  <xacro:property name="end_effector_teleop_right" value="$(arg end_effector_teleop_right)" />
   <xacro:property name="ft_sensor_left" value="$(arg ft_sensor_left)" />
   <xacro:property name="ft_sensor_right" value="$(arg ft_sensor_right)" />
   <xacro:property name="ft_sensor_teleop_left" value="$(arg ft_sensor_teleop_left)" />
@@ -139,6 +147,11 @@
   <xacro:property name="end_effector_teleop_left_link" value="${'wrist_teleop_left_ft_tool_link' if has_teleop_ft_sensor_left else 'arm_teleop_left_tool_link'}" />
   <xacro:property name="end_effector_right_name" value="gripper_right" />
 
+  <xacro:property name="has_end_effector_teleop_left" value="${end_effector_teleop_left not in ['no-end-effector']}" />
+  <xacro:property name="has_end_effector_teleop_right" value="${end_effector_teleop_right not in ['no-end-effector']}" />
+  <xacro:property name="end_effector_teleop_left_name" value="gripper_teleop_left" />
+  <xacro:property name="end_effector_teleop_right_name" value="gripper_teleop_right" />
+  
   <!-- Properties check -->
   <xacro:if value="${arm_type_left not in ['tiago-pro-prototype', 'tiago-pro', 'tiago-pro-s', 'no-arm']}">
     <xacro:wrong_arm_type_left />
@@ -157,6 +170,12 @@
   </xacro:if>
   <xacro:if value="${end_effector_right not in ['pal-pro-gripper', 'custom', 'no-end-effector', 'allegro-hand']}">
     <xacro:wrong_end_effector_right />
+  </xacro:if>
+  <xacro:if value="${end_effector_teleop_left not in ['pal-pro-gripper', 'custom', 'no-end-effector', 'allegro-hand']}">
+    <xacro:wrong_end_effector_teleop_left />
+  </xacro:if>
+  <xacro:if value="${end_effector_teleop_right not in ['pal-pro-gripper', 'custom', 'no-end-effector', 'allegro-hand']}">
+    <xacro:wrong_end_effector_teleop_right />
   </xacro:if>
   <xacro:if value="${ft_sensor_left not in ['no-ft-sensor', 'rokubi', 'ati']}">
     <xacro:wrong_ft_sensor_left />
@@ -217,6 +236,11 @@
   <!-- Torso -->
   <xacro:include filename="$(find tiago_pro_description)/urdf/torso/torso.urdf.xacro" />
 
+  <!-- Teleop basestation -->
+  <xacro:if value="${has_teleop_arms}">
+    <xacro:include filename="$(find tiago_pro_description)/urdf/teleop_basestation/basestation.urdf.xacro" />
+  </xacro:if>
+
   <!-- Calibration constants -->
   <xacro:include filename="$(arg calibration_offset_dir)/calibration_offset.urdf.xacro" />
 
@@ -226,10 +250,15 @@
   </xacro:if>
 
   <!-- End effector -->
-  <xacro:if value="${(has_arm_right or has_arm_left) and (has_end_effector_right or has_end_effector_left)}">
+  <xacro:if value="${(has_arm_right or has_arm_left) and (has_end_effector_right or has_end_effector_left) and (has_end_effector_teleop_right or has_end_effector_teleop_left)}">
     <xacro:include filename="$(find pal_sea_arm_description)/urdf/end_effector/end_effector.urdf.xacro" />
   </xacro:if>
 
+  <!-- Trigger Handle for teleop -->
+  <xacro:if value="${has_teleop_arms}">
+    <xacro:include filename="$(find tiago_pro_description)/urdf/teleop_basestation/teleop_handle.urdf.xacro" />
+  </xacro:if>
+  
   <!-- Force Torque sensor -->
   <xacro:if value="${has_ft_sensor_right or has_ft_sensor_left or has_teleop_ft_sensor_right or has_teleop_ft_sensor_left}">
     <xacro:include filename="$(find pal_urdf_utils)/urdf/ft_sensors/ft_sensor.urdf.xacro" />
@@ -252,6 +281,11 @@
 
   <!-- Torso -->
   <xacro:tiago_pro_torso name="torso" parent="base_link"/>
+
+  <!-- Teleoperation base station -->
+  <xacro:if value="${has_teleop_arms}">
+    <xacro:tiago_pro_teleop_basestation name="teleop_basestation" parent="base_footprint"/>
+  </xacro:if>
 
   <!-- Head -->
   <xacro:tiago_pro_head name="head" parent="torso_head_link" camera_model="$(arg camera_model)"/>
@@ -296,13 +330,15 @@
 
   </xacro:if>
 
-  <!-- Teleop arms without FT -->
+  <!-- Teleop arms FT --> 
   <xacro:if value="${has_teleop_arms}">
-    <xacro:pal_sea_arm name="arm_teleop_right" parent="torso_lift_link" arm_type="${arm_type_teleop_right}" wrist_model="${wrist_model_right}" tool_changer="${tool_changer_teleop_right}" reflect="1" joint_reflect="1" arm_1_offset="${arm_right_1_joint_offset}" arm_2_offset="${arm_right_2_joint_offset}" arm_3_offset="${arm_right_3_joint_offset}" arm_4_offset="${arm_right_4_joint_offset}" arm_5_offset="${arm_right_5_joint_offset}" arm_6_offset="${arm_right_6_joint_offset}" arm_7_offset="${arm_right_7_joint_offset}">
-      <origin xyz="$(arg arm_x) ${-12*$(arg arm_y)} $(arg arm_z)" rpy="$(arg arm_roll) ${-11.0*$(arg arm_pitch)} ${-3.14159 -$(arg arm_yaw)}"/>
+    
+    <xacro:pal_sea_arm name="arm_teleop_right" parent="teleop_basestation_base_link" arm_type="${arm_type_teleop_right}" wrist_model="${wrist_model_right}" tool_changer="${tool_changer_teleop_right}" reflect="1" joint_reflect="1" arm_1_offset="${arm_right_1_joint_offset}" arm_2_offset="${arm_right_2_joint_offset}" arm_3_offset="${arm_right_3_joint_offset}" arm_4_offset="${arm_right_4_joint_offset}" arm_5_offset="${arm_right_5_joint_offset}" arm_6_offset="${arm_right_6_joint_offset}" arm_7_offset="${arm_right_7_joint_offset}">
+      <origin xyz="0.0 -0.159181203216899 1.21589163274" rpy="-2.06788770984932 0 -1.91986217719377"/>    
     </xacro:pal_sea_arm>
-    <xacro:pal_sea_arm name="arm_teleop_left" parent="torso_lift_link" arm_type="${arm_type_teleop_left}" wrist_model="${wrist_model_left}" tool_changer="${tool_changer_teleop_left}" reflect="1" joint_reflect="-1" arm_1_offset="${arm_left_1_joint_offset}" arm_2_offset="${arm_left_2_joint_offset}" arm_3_offset="${arm_left_3_joint_offset}" arm_4_offset="${arm_left_4_joint_offset}" arm_5_offset="${arm_left_5_joint_offset}" arm_6_offset="${arm_left_6_joint_offset}" arm_7_offset="${arm_left_7_joint_offset}">
-      <origin xyz="$(arg arm_x) ${-10.0*$(arg arm_y)} $(arg arm_z)" rpy="$(arg arm_roll) $(arg arm_pitch) $(arg arm_yaw)"/>
+
+    <xacro:pal_sea_arm name="arm_teleop_left" parent="teleop_basestation_base_link" arm_type="${arm_type_teleop_left}" wrist_model="${wrist_model_left}" tool_changer="${tool_changer_teleop_left}" reflect="1" joint_reflect="-1" arm_1_offset="${arm_left_1_joint_offset}" arm_2_offset="${arm_left_2_joint_offset}" arm_3_offset="${arm_left_3_joint_offset}" arm_4_offset="${arm_left_4_joint_offset}" arm_5_offset="${arm_left_5_joint_offset}" arm_6_offset="${arm_left_6_joint_offset}" arm_7_offset="${arm_left_7_joint_offset}">
+      <origin xyz="0.0 0.159181203216899 1.21589163274" rpy="-2.06788770984932 0 -1.22173047639603"/>
     </xacro:pal_sea_arm>  
     
     <xacro:if value="${has_teleop_ft_sensor_right}">
@@ -312,6 +348,19 @@
       <xacro:ft_sensor type="${ft_sensor_teleop_left}" name="wrist_teleop_left" parent="arm_teleop_left_tool_link"/>
     </xacro:if>
 
+    <xacro:if value="${has_end_effector_teleop_left}">
+      <xacro:pal_sea_arm_end_effector name="gripper_teleop_left" parent="${end_effector_teleop_left_link}" type="${end_effector_teleop_left}" tool_changer="${tool_changer_teleop_left}" reflect="-1"/>
+    </xacro:if>
+    <xacro:if value="${has_end_effector_teleop_right}">
+      <xacro:pal_sea_arm_end_effector name="gripper_teleop_right" parent="${end_effector_teleop_right_link}" type="${end_effector_teleop_right}" tool_changer="${tool_changer_teleop_right}" reflect="1"/>
+    </xacro:if>
+    
+    <xacro:else value="${has_end_effector_teleop_left}">
+      <xacro:tiago_pro_teleop_handle name="teleop_handle_left" parent="${end_effector_teleop_left_link}"/>
+    </xacro:else>
+    <xacro:else value="${has_end_effector_teleop_right}">
+      <xacro:tiago_pro_teleop_handle name="teleop_handle_right" parent="${end_effector_teleop_right_link}"/>
+    </xacro:else>
   </xacro:if>
 
   <!-- ROS 2 Control -->

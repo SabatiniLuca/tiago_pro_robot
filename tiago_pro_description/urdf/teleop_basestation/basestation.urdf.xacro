@@ -1,0 +1,98 @@
+<?xml version="1.0" ?>
+<!--
+
+  Copyright (c) 2025 PAL Robotics S.L. All rights reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:macro name="tiago_pro_teleop_basestation" params="name parent">
+  
+  <!-- Teleoperation base station -->
+    <link
+      name="${name}_base_link">
+      <inertial>
+        <origin
+          xyz="-0.01232 -4.7946E-05 0.35903"
+          rpy="0 0 0" />
+        <mass
+          value="40.604" />
+        <inertia
+          ixx="1.8778"
+          ixy="7.8157E-06"
+          ixz="-0.0002729"
+          iyy="1.896"
+          iyz="-9.143E-05"
+          izz="0.69356" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+            <mesh filename="package://tiago_pro_description/meshes/teleop_basestation/fixed_sit_station.stl" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.75294 0.75294 0.75294 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+            <mesh filename="package://tiago_pro_description/meshes/teleop_basestation/fixed_sit_station.stl" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="${name}_base_joint"
+      type="fixed">
+      <origin
+        rpy="0 0 0"
+        xyz="0.0 -1.5 0.0" />
+      <parent
+        link="${parent}" />
+      <child
+        link="${name}_base_link" />
+      <axis
+        xyz="0 0 0" />
+    </joint>
+
+    <!-- Teleop basestation arm left link -->
+    <link name="${name}_arm_left_link"/>
+    
+    <joint name="${name}_arm_left_joint" type="fixed">
+      <origin xyz="0.0 0.159181203216899 1.21589163274" rpy="-2.06788770984932 0 -1.22173047639603" />
+      <parent link="${name}_base_link" />
+      <child link="${name}_arm_left_link" />
+      <axis xyz="0 0 0" />
+    </joint>
+
+    <!-- Teleop basestation arm right link -->
+    <link name="${name}_arm_right_link"/>
+
+    <joint name="${name}_arm_right_joint" type="fixed">
+      <origin xyz="0.0 -0.159181203216899 1.21589163274" rpy="-2.06788770984932 0 -1.91986217719377" />
+      <parent link="${name}_base_link" />
+      <child link="${name}_arm_right_link" />
+      <axis xyz="0 0 0" />
+    </joint>
+    
+
+  </xacro:macro>
+</robot>
