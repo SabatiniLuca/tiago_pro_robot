@@ -51,15 +51,3 @@ arm_${ARM_SIDE_PREFIX}_cartesian_force_controller:
       arm_teleop_${ARM_SIDE_PREFIX}_7_link:
         name: wrist_teleop_${ARM_SIDE_PREFIX}_ft_sensor
         filter_cutoff: 0.1
-
-    haptic_feedback: true
-
-    ft_sensor_slave:
-      arm_teleop_${ARM_SIDE_PREFIX}_7_link:
-        name: wrist_${ARM_SIDE_PREFIX}_ft_sensor
-        filter_cutoff: 0.1
-    
-    impedance_gains:
-      arm_teleop_${ARM_SIDE_PREFIX}_1_link:
-        kp: 1.0
-        kd: 0.0
