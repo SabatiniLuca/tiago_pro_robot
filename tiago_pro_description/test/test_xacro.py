@@ -70,6 +70,8 @@ if not os.environ.get('PAL_DISTRO'):
 else:
     end_effector_left = TiagoProArgs.end_effector_left
     end_effector_right = TiagoProArgs.end_effector_right
+    end_effector_teleop_left = TiagoProArgs.end_effector_teleop_left
+    end_effector_teleop_right = TiagoProArgs.end_effector_teleop_right
     gripper_args = (end_effector_left, end_effector_right)
 test_xacro_base = define_xacro_test(
     xacro_file_path, arm_args, TiagoProArgs.base_type)
