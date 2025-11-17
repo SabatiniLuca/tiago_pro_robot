@@ -120,14 +120,12 @@ def setup_arm_controllers(context, arm_side, *args, **kwargs):
         arm_side,
         load_gains_separately=True,
     )
-
     cartesian_space_controller_robot_frame = setup_arm_side_controller(
         context,
         "cartesian_space_controller_robot_frame",
         arm_side,
         load_gains_separately=True,
     )
-
     cartesian_vel_ee_frame = setup_arm_side_controller(
         context, "cartesian_vel_controller_ee_frame", arm_side, load_gains_separately=True
     )
@@ -140,7 +138,6 @@ def setup_arm_controllers(context, arm_side, *args, **kwargs):
     joint_space_controller = setup_arm_side_controller(
         context, "joint_space_controller", arm_side, load_gains_separately=True
     )
-    
     cartesian_force_controller = setup_arm_side_controller(
         context, "cartesian_force_controller", arm_side,
     )
@@ -162,7 +159,7 @@ def setup_arm_side_controller(
 
     arm_prefix = f"arm_{arm_side}"
     side_controller_name = f"{arm_prefix}_{controller_name}"
-    
+
     if controller_name == "cartesian_force_controller":
         arm_prefix = arm_side
         side_controller_name = f"arm_{arm_prefix}_{controller_name}"

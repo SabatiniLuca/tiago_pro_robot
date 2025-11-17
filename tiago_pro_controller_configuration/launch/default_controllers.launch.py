@@ -112,19 +112,19 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
     launch_description.add_action(OpaqueFunction(
         function=configure_side_controllers, args=['teleop_left'],
         condition=IfCondition(LaunchConfiguration("has_teleop_arms"))))
-    
+
     return
 
 
 def configure_side_controllers(context, end_effector_side='right', *args, **kwargs):
 
     is_teleop = end_effector_side.startswith('teleop')
-    
+
     if is_teleop:
         root_link_str = "teleop_basestation_base_link"
     else:
         root_link_str = "torso_lift_link"
-        
+
     end_effector_arg_name = concatenate_strings(
         strings=['end_effector', end_effector_side],
         delimiter='_',
@@ -161,7 +161,7 @@ def configure_side_controllers(context, end_effector_side='right', *args, **kwar
     gravity_compensation_controller_torque = include_scoped_launch_py_description(
         pkg_name='pal_sea_arm_controller_configuration',
         paths=['launch', 'gravity_compensation_controller.launch.py'],
-        launch_arguments={"side": end_effector_side, 
+        launch_arguments={"side": end_effector_side,
                           "mode": "torque",
                           "root_link": root_link_str},
         condition=IfCondition(LaunchConfiguration("torque_estimation")))
@@ -208,7 +208,7 @@ def configure_side_controllers(context, end_effector_side='right', *args, **kwar
 
     return [arm_controller, sea_state_broadcaster_controller,
             gravity_compensation_controller_effort,
-            gravity_compensation_controller_torque, 
+            gravity_compensation_controller_torque,
             inertia_shaping_controllers,
             end_effector_controller, ft_sensor_controller]
 

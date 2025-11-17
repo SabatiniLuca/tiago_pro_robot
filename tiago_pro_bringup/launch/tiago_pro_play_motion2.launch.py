@@ -120,7 +120,7 @@ def create_play_motion_filename(context):
 
     motion_yamls = [os.path.join(motions_folder, f) for f in motion_files]
     motion_yamls.extend(head_motions)
-    combined_yaml = merge_param_files(motion_yamls)     
+    combined_yaml = merge_param_files(motion_yamls)
     motion_planner_file = f"motion_planner{hw_suffix}.yaml"
     motion_planner_config = PathJoinSubstitution([
         pkg_share_dir,
