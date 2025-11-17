@@ -108,6 +108,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
     launch_description.add_action(OpaqueFunction(
         function=configure_side_controllers, args=['teleop_right'],
         condition=IfCondition(LaunchConfiguration("has_teleop_arms"))))
+
     launch_description.add_action(OpaqueFunction(
         function=configure_side_controllers, args=['teleop_left'],
         condition=IfCondition(LaunchConfiguration("has_teleop_arms"))))

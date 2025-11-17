@@ -34,6 +34,14 @@ end_effector_left:
   description: 'End effector model left arm'
   choices: ['pal-pro-gripper', 'custom', 'no-end-effector', 'allegro-hand']
   default_value: 'pal-pro-gripper'
+end_effector_teleop_right:
+  description: 'End effector model right teleop arm'
+  choices: ['pal-pro-gripper', 'custom', 'no-end-effector', 'allegro-hand']
+  default_value: 'no-end-effector'
+end_effector_teleop_left:
+  description: 'End effector model left teleop arm'
+  choices: ['pal-pro-gripper', 'custom', 'no-end-effector', 'allegro-hand']
+  default_value: 'no-end-effector'
 ft_sensor_right:
   description: 'FT sensor model right arm'
   choices: ['ati', 'rokubi', 'no-ft-sensor']

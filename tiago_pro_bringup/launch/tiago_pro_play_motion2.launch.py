@@ -36,6 +36,8 @@ class LaunchArguments(LaunchArgumentsBase):
     arm_type_left: DeclareLaunchArgument = TiagoProArgs.arm_type_left
     end_effector_right: DeclareLaunchArgument = TiagoProArgs.end_effector_right
     end_effector_left: DeclareLaunchArgument = TiagoProArgs.end_effector_left
+    end_effector_teleop_right: DeclareLaunchArgument = TiagoProArgs.end_effector_teleop_right
+    end_effector_teleop_left: DeclareLaunchArgument = TiagoProArgs.end_effector_teleop_left
     wrist_model_right: DeclareLaunchArgument = TiagoProArgs.wrist_model_right
     wrist_model_left: DeclareLaunchArgument = TiagoProArgs.wrist_model_left
     has_teleop_arms: DeclareLaunchArgument = TiagoProArgs.has_teleop_arms
@@ -63,13 +65,18 @@ def create_play_motion_filename(context):
 
     pkg_name = 'tiago_pro_bringup'
     pkg_share_dir = get_package_share_directory(pkg_name)
+    has_teleop_arms = read_launch_argument('has_teleop_arms', context)
+
+    if has_teleop_arms := read_launch_argument('has_teleop_arms', context):
+        ee_right = read_launch_argument('end_effector_teleop_right', context)
+        ee_left = read_launch_argument('end_effector_teleop_left', context)
+    else:
+        ee_right = read_launch_argument('end_effector_right', context)
+        ee_left = read_launch_argument('end_effector_left', context)
     arm_right = read_launch_argument('arm_type_right', context)
-    ee_right = read_launch_argument('end_effector_right', context)
     arm_left = read_launch_argument('arm_type_left', context)
-    ee_left = read_launch_argument('end_effector_left', context)
     wrist_model_right = read_launch_argument('wrist_model_right', context)
     wrist_model_left = read_launch_argument('wrist_model_left', context)
-    has_teleop_arms = read_launch_argument('has_teleop_arms', context)
 
     hw_suffix = get_tiago_pro_hw_suffix(
         arm_right=arm_right,
