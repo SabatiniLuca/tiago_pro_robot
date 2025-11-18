@@ -41,12 +41,6 @@ wrist_args_right = (
     TiagoProArgs.tool_changer_right,
     TiagoProArgs.ft_sensor_right,
 )
-teleop_args = (
-    TiagoProArgs.end_effector_teleop_right,
-    TiagoProArgs.end_effector_teleop_left,
-    TiagoProArgs.ft_sensor_teleop_right,
-    TiagoProArgs.ft_sensor_teleop_left,
-)
 
 
 def exclude_allegro_hand(end_effector):
@@ -73,6 +67,13 @@ else:
     end_effector_teleop_left = TiagoProArgs.end_effector_teleop_left
     end_effector_teleop_right = TiagoProArgs.end_effector_teleop_right
     gripper_args = (end_effector_left, end_effector_right)
+
+teleop_args = (
+    end_effector_teleop_right,
+    end_effector_teleop_left,
+    TiagoProArgs.ft_sensor_teleop_right,
+    TiagoProArgs.ft_sensor_teleop_left,
+)
 test_xacro_base = define_xacro_test(
     xacro_file_path, arm_args, TiagoProArgs.base_type)
 test_xacro_laser = define_xacro_test(
