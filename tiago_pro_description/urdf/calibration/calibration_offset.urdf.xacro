@@ -2,7 +2,7 @@
 <!--
 
   Copyright (c) 2023, PAL Robotics, S.L.
-  All rights reserved. VALORI DALLO YAML
+  All rights reserved.
 
 -->
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
