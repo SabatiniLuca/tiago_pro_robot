@@ -76,13 +76,6 @@
     </xacro:if>
   </xacro:macro>
 
-  <xacro:macro name="ros2_control_head">
-    <!-- head -->
-    <xacro:ros2_control_head_joint name="head_1" offset_value="${head_1_joint_offset}" reduction="1.0"/>
-    <xacro:ros2_control_head_joint name="head_2" offset_value="${head_2_joint_offset}" reduction="1.0"/>
-  </xacro:macro>
-
-
   <xacro:macro name="tiago_pro_ros2_control" params="use_sim_time:=^|false">
 
     <xacro:arg name="arm_type_left" default="tiago-pro"/>
