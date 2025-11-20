@@ -76,7 +76,7 @@
     </xacro:if>
   </xacro:macro>
 
-  <xacro:macro name="ros2_control_heads">
+  <xacro:macro name="ros2_control_head">
     <!-- head -->
     <xacro:ros2_control_head_joint name="head_1" offset_value="${head_1_joint_offset}" reduction="1.0"/>
     <xacro:ros2_control_head_joint name="head_2" offset_value="${head_2_joint_offset}" reduction="1.0"/>
@@ -145,7 +145,7 @@
         <xacro:ros2_control_torso name="torso_lift" reduction="1.0" />
 
         <!-- head -->
-        <xacro:ros2_control_heads />
+        <xacro:ros2_control_head />
 
         <!-- arms -->
         <xacro:ros2_control_arms/>
@@ -182,7 +182,7 @@
         </hardware>
 
         <!-- head -->
-        <xacro:ros2_control_heads />
+        <xacro:ros2_control_head />
 
       </ros2_control>
 
