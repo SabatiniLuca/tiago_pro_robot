@@ -138,7 +138,7 @@
         <xacro:ros2_control_torso name="torso_lift" reduction="1.0" />
 
         <!-- head -->
-        <xacro:ros2_control_head head_1_joint_offset="${head_1_joint_offset}" head_2_joint_offset="${head_2_joint_offset}" />
+        <xacro:ros2_control_head />
 
         <!-- arms -->
         <xacro:ros2_control_arms/>
@@ -175,7 +175,7 @@
         </hardware>
 
         <!-- head -->
-        <xacro:ros2_control_head head_1_joint_offset="${head_1_joint_offset}" head_2_joint_offset="${head_2_joint_offset}" />
+        <xacro:ros2_control_head />
 
       </ros2_control>
 
