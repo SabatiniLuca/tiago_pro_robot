@@ -2,8 +2,8 @@
 Changelog for package tiago_pro_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.32.3 (2025-11-28)
+-------------------
 * fixing values
 * changing values motions
 * Contributors: susannamastromauro
