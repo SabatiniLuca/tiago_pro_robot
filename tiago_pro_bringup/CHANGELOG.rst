@@ -2,6 +2,12 @@
 Changelog for package tiago_pro_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* fixing values
+* changing values motions
+* Contributors: susannamastromauro
+
 1.32.2 (2025-11-12)
 -------------------
 * changing max and mid value
