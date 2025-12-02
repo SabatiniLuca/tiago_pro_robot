@@ -252,6 +252,7 @@
   <!-- End effector -->
   <xacro:if value="${(has_arm_right or has_arm_left) and (has_end_effector_right or has_end_effector_left)}">
     <xacro:include filename="$(find pal_sea_arm_description)/urdf/end_effector/end_effector.urdf.xacro" />
+    <xacro:include filename="$(find pal_sea_arm_description)/urdf/end_effector_camera/end_effector_camera.urdf.xacro" />
   </xacro:if>
 
   <!-- Trigger Handle for teleop -->
@@ -308,6 +309,8 @@
       <xacro:pal_sea_arm_end_effector name="gripper_left" parent="${end_effector_left_link}" type="${end_effector_left}" tool_changer="${tool_changer_left}" reflect="-1"/>
     </xacro:if>
 
+    <xacro:pal_sea_arm_end_effector_camera name="gripper_left_camera" parent="${end_effector_left_link}" type="realsense-d435" camera_position="up"/>
+    
     <!-- FT sensors -->
     <xacro:if value="${has_ft_sensor_left}">
       <xacro:ft_sensor type="${ft_sensor_left}" name="wrist_left" parent="arm_left_tool_link"/>
@@ -327,6 +330,8 @@
     <xacro:if value="${has_end_effector_right}">
       <xacro:pal_sea_arm_end_effector name="gripper_right" parent="${end_effector_right_link}" type="${end_effector_right}" tool_changer="${tool_changer_right}" reflect="1"/>
     </xacro:if>
+
+    <xacro:pal_sea_arm_end_effector_camera name="gripper_right_camera" parent="${end_effector_right_link}" type="realsense-d435" camera_position="up"/>
 
     <!-- FT sensors -->
     <xacro:if value="${has_ft_sensor_right}">
