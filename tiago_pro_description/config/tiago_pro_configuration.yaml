@@ -74,3 +74,7 @@ has_wrist_camera:
   description: 'The robot has wrist camera on the arms'
   choices: ['False', 'True']
   default_value: 'False'
+calibration_tool:
+  description: 'Set to True to include the calibration tool on the gripper'
+  choices: ['False', 'True']
+  default_value: 'False'

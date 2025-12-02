@@ -44,6 +44,7 @@ class LaunchArguments(LaunchArgumentsBase):
     torque_estimation: DeclareLaunchArgument = TiagoProArgs.torque_estimation
     has_teleop_arms: DeclareLaunchArgument = TiagoProArgs.has_teleop_arms
     has_wrist_camera: DeclareLaunchArgument = TiagoProArgs.has_wrist_camera
+    calibration_tool: DeclareLaunchArgument = TiagoProArgs.calibration_tool
 
     use_sim_time: DeclareLaunchArgument = CommonArgs.use_sim_time
     namespace: DeclareLaunchArgument = CommonArgs.namespace
@@ -112,6 +113,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
                           "camera_model": launch_args.camera_model,
                           "base_type": launch_args.base_type,
                           "torque_estimation": launch_args.torque_estimation,
+                          "calibration_tool": launch_args.calibration_tool,
                           "namespace": launch_args.namespace,
                           "use_sim_time": launch_args.use_sim_time,
                           "is_public_sim": launch_args.is_public_sim,
