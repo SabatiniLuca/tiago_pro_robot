@@ -2,6 +2,11 @@
 Changelog for package tiago_pro_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add gazebo_version xacro argument
+* Contributors: Noel Jimenez
+
 1.32.3 (2025-11-28)
 -------------------
 
