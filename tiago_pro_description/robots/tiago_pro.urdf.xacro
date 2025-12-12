@@ -59,6 +59,9 @@
   <xacro:arg name="torque_estimation" default="False" />
 
   <xacro:arg name="gazebo_version" default="classic"/>
+  <!-- False, True -->
+  <xacro:arg name="has_teleop_arms" default="False" />
+  
   <xacro:arg name="use_sim_time" default="false"/>
   <xacro:arg name="is_public_sim" default="false"/>
   <xacro:arg name="is_multiple" default="false"/>
@@ -76,6 +79,7 @@
 
   <xacro:property name="torque_estimation" value="$(arg torque_estimation)" />
   <xacro:property name="gazebo_version" value="$(arg gazebo_version)" />
+  <xacro:property name="has_teleop_arms" value="$(arg has_teleop_arms)" />
   <xacro:property name="use_sim_time" value="$(arg use_sim_time)" />
   <xacro:property name="is_multiple" value="$(arg is_multiple)" />
   <xacro:property name="namespace" value="$(arg namespace)" />
@@ -250,8 +254,24 @@
     </xacro:if>
 
   </xacro:if>
+  <!-- Teleop arms without FT -->
+  <xacro:if value="${has_teleop_arms}">
+    <xacro:pal_sea_arm name="arm_teleop_right" parent="torso_lift_link" arm_type="${arm_type_right}" wrist_model="${wrist_model_right}" tool_changer="${tool_changer_right}" reflect="1" joint_reflect="1" arm_1_offset="${arm_right_1_joint_offset}" arm_2_offset="${arm_right_2_joint_offset}" arm_3_offset="${arm_right_3_joint_offset}" arm_4_offset="${arm_right_4_joint_offset}" arm_5_offset="${arm_right_5_joint_offset}" arm_6_offset="${arm_right_6_joint_offset}" arm_7_offset="${arm_right_7_joint_offset}">
+      <origin xyz="$(arg arm_x) ${-12*$(arg arm_y)} $(arg arm_z)" rpy="$(arg arm_roll) ${-11.0*$(arg arm_pitch)} ${-3.14159 -$(arg arm_yaw)}"/>
+    </xacro:pal_sea_arm>
+    <xacro:pal_sea_arm name="arm_teleop_left" parent="torso_lift_link" arm_type="${arm_type_left}" wrist_model="${wrist_model_left}" tool_changer="${tool_changer_left}" reflect="1" joint_reflect="1" arm_1_offset="${arm_left_1_joint_offset}" arm_2_offset="${arm_left_2_joint_offset}" arm_3_offset="${arm_left_3_joint_offset}" arm_4_offset="${arm_left_4_joint_offset}" arm_5_offset="${arm_left_5_joint_offset}" arm_6_offset="${arm_left_6_joint_offset}" arm_7_offset="${arm_left_7_joint_offset}">
+      <origin xyz="$(arg arm_x) ${-10.0*$(arg arm_y)} $(arg arm_z)" rpy="$(arg arm_roll) $(arg arm_pitch) $(arg arm_yaw)"/>
+    </xacro:pal_sea_arm>  
+
+    <xacro:if value="${has_end_effector_left}">
+      <xacro:pal_sea_arm_end_effector name="gripper_teleop_left" parent="arm_teleop_left_tool_link" type="${end_effector_left}" tool_changer="${tool_changer_left}" reflect="-1"/>
+    </xacro:if>
+    <xacro:if value="${has_end_effector_right}">
+      <xacro:pal_sea_arm_end_effector name="gripper_teleop_right" parent="arm_teleop_right_tool_link" type="${end_effector_right}" tool_changer="${tool_changer_right}" reflect="1"/>
+    </xacro:if>
+  </xacro:if>
 
   <!-- ROS 2 Control -->
-  <xacro:tiago_pro_ros2_control use_sim_time="$(arg use_sim_time)" />
+  <xacro:tiago_pro_ros2_control use_sim_time="$(arg use_sim_time)" has_teleop_arms="${has_teleop_arms}"/>
 
 </robot>
