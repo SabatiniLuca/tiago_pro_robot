@@ -173,7 +173,7 @@
   <xacro:include filename="$(find tiago_pro_description)/urdf/torso/torso.urdf.xacro" />
 
   <!-- Calibration constants -->
-  <xacro:include filename="$(arg arm_calibration_dir)/arm_calibration.urdf.xacro" />
+  <xacro:include filename="$(arg arm_calibration_dir)/calibration_offset.urdf.xacro" />
 
   <!-- Arm -->
   <xacro:if value="${has_arm_right or has_arm_left}">
