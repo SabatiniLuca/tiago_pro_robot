@@ -2,6 +2,22 @@
 Changelog for package tiago_pro_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* changes for head_offset
+* changes for head_offset
+* changes for head_offset
+* changes for head_offset
+* head_offset
+* reduction param
+* reduction param
+* offset
+* offset
+* offset
+* adding head calibration offset
+* adding head calibration offset
+* Contributors: silviamasiello
+
 1.33.0 (2025-12-05)
 -------------------
 * Add gazebo_version xacro argument
