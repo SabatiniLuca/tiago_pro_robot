@@ -2,8 +2,8 @@
 Changelog for package tiago_pro_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.34.1 (2026-01-08)
+-------------------
 * rename calibration directory
 * Contributors: silviamasiello
 
