@@ -2,6 +2,11 @@
 Changelog for package tiago_pro_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* rename calibration directory
+* Contributors: silviamasiello
+
 1.34.0 (2025-12-15)
 -------------------
 * changes for head_offset

@@ -2,6 +2,11 @@
 Changelog for package tiago_pro_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add torso motions with no arms
+* Contributors: Aina
+
 1.34.0 (2025-12-15)
 -------------------
 
