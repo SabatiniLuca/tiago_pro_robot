@@ -8,23 +8,23 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
 	<!--Constant parameters-->
-	<xacro:property name="arm_left_1_joint_offset" value="-0.00598518" />
-	<xacro:property name="arm_left_2_joint_offset" value="-0.0151778" />
-	<xacro:property name="arm_left_3_joint_offset" value="-0.016211" />
-	<xacro:property name="arm_left_4_joint_offset" value="-0.0194963" />
-	<xacro:property name="arm_left_5_joint_offset" value="-0.0179289" />
-	<xacro:property name="arm_left_6_joint_offset" value="0.00434677" />
+	<xacro:property name="arm_left_1_joint_offset" value="0.0" />
+	<xacro:property name="arm_left_2_joint_offset" value="0.0" />
+	<xacro:property name="arm_left_3_joint_offset" value="0.0" />
+	<xacro:property name="arm_left_4_joint_offset" value="0.0" />
+	<xacro:property name="arm_left_5_joint_offset" value="0.0" />
+	<xacro:property name="arm_left_6_joint_offset" value="0.0" />
 	<xacro:property name="arm_left_7_joint_offset" value="0.0" />
 	
-	<xacro:property name="arm_right_1_joint_offset" value="0.00293542" />
-  	<xacro:property name="arm_right_2_joint_offset" value="-0.00927166" />
-  	<xacro:property name="arm_right_3_joint_offset" value="-0.0213567" />
-  	<xacro:property name="arm_right_4_joint_offset" value="-0.0149163" />
-  	<xacro:property name="arm_right_5_joint_offset" value="0.0145626" />
-  	<xacro:property name="arm_right_6_joint_offset" value="-0.00140913" />
+	<xacro:property name="arm_right_1_joint_offset" value="0.0" />
+  	<xacro:property name="arm_right_2_joint_offset" value="0.0" />
+  	<xacro:property name="arm_right_3_joint_offset" value="0.0" />
+  	<xacro:property name="arm_right_4_joint_offset" value="0.0" />
+  	<xacro:property name="arm_right_5_joint_offset" value="0.0" />
+  	<xacro:property name="arm_right_6_joint_offset" value="0.0" />
   	<xacro:property name="arm_right_7_joint_offset" value="0.0" />
 
-	<xacro:property name="head_1_joint_offset" value="-0.00198566" />
-  	<xacro:property name="head_2_joint_offset" value="0.0841357" />
+	<xacro:property name="head_1_joint_offset" value="0.0" />
+  	<xacro:property name="head_2_joint_offset" value="0.0" />
 
 </robot>
