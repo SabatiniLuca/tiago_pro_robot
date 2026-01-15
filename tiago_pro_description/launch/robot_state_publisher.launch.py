@@ -53,7 +53,7 @@ class LaunchArguments(LaunchArgumentsBase):
     torque_estimation: DeclareLaunchArgument = TiagoProArgs.torque_estimation
     has_teleop_arms: DeclareLaunchArgument = TiagoProArgs.has_teleop_arms
     has_wrist_camera: DeclareLaunchArgument = TiagoProArgs.has_wrist_camera
-
+    limits_v2: DeclareLaunchArgument = TiagoProArgs.limits_v2,
     use_sim_time: DeclareLaunchArgument = CommonArgs.use_sim_time
     namespace: DeclareLaunchArgument = CommonArgs.namespace
     is_public_sim: DeclareLaunchArgument = CommonArgs.is_public_sim
@@ -100,6 +100,7 @@ def create_robot_description_param(context, *args, **kwargs):
         'tool_changer_left': read_launch_argument('tool_changer_left', context),
         'torque_estimation': read_launch_argument('torque_estimation', context),
         'calibration_tool': read_launch_argument('calibration_tool', context),
+        'limits_v2': read_launch_argument('limits_v2', context),
         'use_sim_time': read_launch_argument('use_sim_time', context),
         'namespace': read_launch_argument('namespace', context),
         'is_public_sim': read_launch_argument('is_public_sim', context),

@@ -49,3 +49,4 @@ class TiagoProArgs:
     has_teleop_arms: DLA = __arg_creator.get_argument("has_teleop_arms")
     has_wrist_camera: DLA = __arg_creator.get_argument("has_wrist_camera")
     calibration_tool: DLA = __arg_creator.get_argument("calibration_tool")
+    limits_v2: DLA = __arg_creator.get_argument("limits_v2")
