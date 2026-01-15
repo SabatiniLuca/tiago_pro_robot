@@ -79,6 +79,9 @@
   <!-- realsense-d435 -->
   <xacro:arg name="camera_model" default="realsense-d435" />
 
+  <!-- limits v2 -->
+  <xacro:arg name="limits_v2" default="False" />
+
   <!-- False, True -->
   <xacro:arg name="torque_estimation" default="False" />
 
@@ -153,6 +156,7 @@
   <xacro:property name="end_effector_teleop_right_link" value="${'wrist_teleop_right_ft_tool_link' if has_teleop_ft_sensor_right else 'arm_teleop_right_tool_link'}" />
   <xacro:property name="end_effector_teleop_left_link" value="${'wrist_teleop_left_ft_tool_link' if has_teleop_ft_sensor_left else 'arm_teleop_left_tool_link'}" />
   <xacro:property name="end_effector_right_name" value="gripper_right" />
+  <xacro:property name="limits_v2" value="$(arg limits_v2)" />
 
   <xacro:property name="has_end_effector_teleop_left" value="${end_effector_teleop_left not in ['no-end-effector']}" />
   <xacro:property name="has_end_effector_teleop_right" value="${end_effector_teleop_right not in ['no-end-effector']}" />
@@ -313,7 +317,7 @@
   <xacro:if value="${has_arm_left}">
 
     <!-- Arm -->
-    <xacro:pal_sea_arm name="arm_left" parent="torso_lift_link" arm_type="${arm_type_left}" wrist_model="${wrist_model_left}" tool_changer="${tool_changer_left}" reflect="1" joint_reflect="-1" arm_1_offset="${arm_left_1_joint_offset}" arm_2_offset="${arm_left_2_joint_offset}" arm_3_offset="${arm_left_3_joint_offset}" arm_4_offset="${arm_left_4_joint_offset}" arm_5_offset="${arm_left_5_joint_offset}" arm_6_offset="${arm_left_6_joint_offset}" arm_7_offset="${arm_left_7_joint_offset}">
+    <xacro:pal_sea_arm name="arm_left" parent="torso_lift_link" arm_type="${arm_type_left}" wrist_model="${wrist_model_left}" tool_changer="${tool_changer_left}" reflect="1" joint_reflect="-1" arm_1_offset="${arm_left_1_joint_offset}" arm_2_offset="${arm_left_2_joint_offset}" arm_3_offset="${arm_left_3_joint_offset}" arm_4_offset="${arm_left_4_joint_offset}" arm_5_offset="${arm_left_5_joint_offset}" arm_6_offset="${arm_left_6_joint_offset}" arm_7_offset="${arm_left_7_joint_offset}" limits_v2="${limits_v2}">
       <origin xyz="$(arg arm_x) $(arg arm_y) $(arg arm_z)" rpy="$(arg arm_roll) $(arg arm_pitch) $(arg arm_yaw)"/>
     </xacro:pal_sea_arm>
 
@@ -337,7 +341,7 @@
   <xacro:if value="${has_arm_right}">
 
     <!-- Arm -->
-    <xacro:pal_sea_arm name="arm_right" parent="torso_lift_link" arm_type="${arm_type_right}" wrist_model="${wrist_model_right}" tool_changer="${tool_changer_right}" reflect="1" joint_reflect="1" arm_1_offset="${arm_right_1_joint_offset}" arm_2_offset="${arm_right_2_joint_offset}" arm_3_offset="${arm_right_3_joint_offset}" arm_4_offset="${arm_right_4_joint_offset}" arm_5_offset="${arm_right_5_joint_offset}" arm_6_offset="${arm_right_6_joint_offset}" arm_7_offset="${arm_right_7_joint_offset}">
+    <xacro:pal_sea_arm name="arm_right" parent="torso_lift_link" arm_type="${arm_type_right}" wrist_model="${wrist_model_right}" tool_changer="${tool_changer_right}" reflect="1" joint_reflect="1" arm_1_offset="${arm_right_1_joint_offset}" arm_2_offset="${arm_right_2_joint_offset}" arm_3_offset="${arm_right_3_joint_offset}" arm_4_offset="${arm_right_4_joint_offset}" arm_5_offset="${arm_right_5_joint_offset}" arm_6_offset="${arm_right_6_joint_offset}" arm_7_offset="${arm_right_7_joint_offset}" limits_v2="${limits_v2}">
       <origin xyz="$(arg arm_x) ${-1.0*$(arg arm_y)} $(arg arm_z)" rpy="$(arg arm_roll) ${-1.0*$(arg arm_pitch)} ${-3.14159 -$(arg arm_yaw)}"/>
     </xacro:pal_sea_arm>
 
