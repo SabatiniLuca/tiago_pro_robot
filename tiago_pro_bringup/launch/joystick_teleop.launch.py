@@ -22,7 +22,6 @@ from launch_ros.actions import Node
 from launch.conditions import LaunchConfigurationNotEquals
 
 from launch_pal.arg_utils import read_launch_argument
-from launch_pal.param_utils import parse_parametric_yaml
 
 from launch_pal.arg_utils import LaunchArgumentsBase
 from tiago_pro_description.launch_arguments import TiagoProArgs
@@ -66,7 +65,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
     pkg_dir = get_package_share_directory('tiago_pro_bringup')
 
     joy_node = Node(
-        package='joy',
+        package='pal_joy',
         executable='game_controller_node',
         name='joystick',
         parameters=[os.path.join(pkg_dir, 'config', 'joy_teleop', 'joy_config.yaml')])

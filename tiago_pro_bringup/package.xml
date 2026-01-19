@@ -16,7 +16,7 @@
   <exec_depend>diagnostic_aggregator</exec_depend>
   <exec_depend>tiago_pro_controller_configuration</exec_depend>
   <exec_depend>tiago_pro_head_bringup</exec_depend>
-  <exec_depend>joy_linux</exec_depend>
+  <exec_depend>joy</exec_depend>
   <exec_depend>joy_teleop</exec_depend>
   <exec_depend>twist_mux</exec_depend>
   <exec_depend>play_motion2</exec_depend>

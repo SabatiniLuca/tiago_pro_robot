@@ -168,7 +168,7 @@ joy_teleop:
       interface_type: change_controllers_interfaces/action/Switch
       action_name: /change_controllers
       action_goal:
-        start_controllers: [arm_left_controller, arm_right_controller]
+        start_controllers: [arm_left_controller]
       buttons: [2]
       axes_negative: [4]
 
@@ -186,7 +186,7 @@ joy_teleop:
       interface_type: change_controllers_interfaces/action/Switch
       action_name: /change_controllers
       action_goal:
-        start_controllers: [arm_left_controller, arm_right_controller]
+        start_controllers: [arm_right_controller]
       buttons: [2]
       axes_negative: [5]
 
