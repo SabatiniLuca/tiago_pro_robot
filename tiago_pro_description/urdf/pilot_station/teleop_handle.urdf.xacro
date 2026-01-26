@@ -42,7 +42,7 @@
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
-          <mesh filename="package://tiago_pro_description/meshes/teleop_basestation/teleop_handle.stl" />
+          <mesh filename="package://tiago_pro_description/meshes/pilot_station/teleop_handle.stl" />
       </geometry>
       <material
         name="">
@@ -55,7 +55,7 @@
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
-          <mesh filename="package://tiago_pro_description/meshes/teleop_basestation/teleop_handle.stl" />
+          <mesh filename="package://tiago_pro_description/meshes/pilot_station/teleop_handle.stl" />
       </geometry>
     </collision>
   </link>

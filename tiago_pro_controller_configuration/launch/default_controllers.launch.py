@@ -121,7 +121,7 @@ def configure_side_controllers(context, end_effector_side='right', *args, **kwar
     is_teleop = end_effector_side.startswith('teleop')
 
     if is_teleop:
-        root_link_str = "teleop_basestation_base_link"
+        root_link_str = "pilot_station_base_link"
     else:
         root_link_str = "torso_lift_link"
 

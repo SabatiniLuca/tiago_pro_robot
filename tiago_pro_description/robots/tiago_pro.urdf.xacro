@@ -236,9 +236,9 @@
   <!-- Torso -->
   <xacro:include filename="$(find tiago_pro_description)/urdf/torso/torso.urdf.xacro" />
 
-  <!-- Teleop basestation -->
+  <!-- Teleop pilot station -->
   <xacro:if value="${has_teleop_arms}">
-    <xacro:include filename="$(find tiago_pro_description)/urdf/teleop_basestation/basestation.urdf.xacro" />
+    <xacro:include filename="$(find tiago_pro_description)/urdf/pilot_station/basestation.urdf.xacro" />
   </xacro:if>
 
   <!-- Calibration constants -->
@@ -258,7 +258,7 @@
   <!-- Trigger Handle for teleop -->
   <xacro:if value="${has_teleop_arms}">
     <xacro:if value="${not has_end_effector_teleop_left or not has_end_effector_teleop_right}">
-      <xacro:include filename="$(find tiago_pro_description)/urdf/teleop_basestation/teleop_handle.urdf.xacro" />
+      <xacro:include filename="$(find tiago_pro_description)/urdf/pilot_station/teleop_handle.urdf.xacro" />
     </xacro:if>
     <xacro:if value="${has_end_effector_teleop_left or has_end_effector_teleop_right}">
       <xacro:include filename="$(find pal_sea_arm_description)/urdf/end_effector/end_effector.urdf.xacro" />  
@@ -290,7 +290,7 @@
 
   <!-- Teleoperation base station -->
   <xacro:if value="${has_teleop_arms}">
-    <xacro:tiago_pro_teleop_basestation name="teleop_basestation" parent="base_footprint"/>
+    <xacro:tiago_pro_pilot_station name="pilot_station" parent="base_footprint"/>
   </xacro:if>
 
   <!-- Head -->
@@ -343,11 +343,11 @@
   <!-- Teleop arms FT --> 
   <xacro:if value="${has_teleop_arms}">
     
-    <xacro:pal_sea_arm name="arm_teleop_right" parent="teleop_basestation_base_link" arm_type="${arm_type_teleop_right}" wrist_model="${wrist_model_right}" tool_changer="${tool_changer_teleop_right}" reflect="1" joint_reflect="1" arm_1_offset="${arm_right_1_joint_offset}" arm_2_offset="${arm_right_2_joint_offset}" arm_3_offset="${arm_right_3_joint_offset}" arm_4_offset="${arm_right_4_joint_offset}" arm_5_offset="${arm_right_5_joint_offset}" arm_6_offset="${arm_right_6_joint_offset}" arm_7_offset="${arm_right_7_joint_offset}">
+    <xacro:pal_sea_arm name="arm_teleop_right" parent="pilot_station_base_link" arm_type="${arm_type_teleop_right}" wrist_model="${wrist_model_right}" tool_changer="${tool_changer_teleop_right}" reflect="1" joint_reflect="1" arm_1_offset="${arm_right_1_joint_offset}" arm_2_offset="${arm_right_2_joint_offset}" arm_3_offset="${arm_right_3_joint_offset}" arm_4_offset="${arm_right_4_joint_offset}" arm_5_offset="${arm_right_5_joint_offset}" arm_6_offset="${arm_right_6_joint_offset}" arm_7_offset="${arm_right_7_joint_offset}">
       <origin xyz="0.0 -0.159181203216899 1.21589163274" rpy="-2.06788770984932 0 -1.91986217719377"/>    
     </xacro:pal_sea_arm>
 
-    <xacro:pal_sea_arm name="arm_teleop_left" parent="teleop_basestation_base_link" arm_type="${arm_type_teleop_left}" wrist_model="${wrist_model_left}" tool_changer="${tool_changer_teleop_left}" reflect="1" joint_reflect="-1" arm_1_offset="${arm_left_1_joint_offset}" arm_2_offset="${arm_left_2_joint_offset}" arm_3_offset="${arm_left_3_joint_offset}" arm_4_offset="${arm_left_4_joint_offset}" arm_5_offset="${arm_left_5_joint_offset}" arm_6_offset="${arm_left_6_joint_offset}" arm_7_offset="${arm_left_7_joint_offset}">
+    <xacro:pal_sea_arm name="arm_teleop_left" parent="pilot_station_base_link" arm_type="${arm_type_teleop_left}" wrist_model="${wrist_model_left}" tool_changer="${tool_changer_teleop_left}" reflect="1" joint_reflect="-1" arm_1_offset="${arm_left_1_joint_offset}" arm_2_offset="${arm_left_2_joint_offset}" arm_3_offset="${arm_left_3_joint_offset}" arm_4_offset="${arm_left_4_joint_offset}" arm_5_offset="${arm_left_5_joint_offset}" arm_6_offset="${arm_left_6_joint_offset}" arm_7_offset="${arm_left_7_joint_offset}">
       <origin xyz="0.0 0.159181203216899 1.21589163274" rpy="-2.06788770984932 0 -1.22173047639603"/>
     </xacro:pal_sea_arm>  
     
