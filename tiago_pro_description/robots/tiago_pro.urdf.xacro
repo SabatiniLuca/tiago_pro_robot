@@ -309,7 +309,7 @@
       <xacro:pal_sea_arm_end_effector name="gripper_left" parent="${end_effector_left_link}" type="${end_effector_left}" tool_changer="${tool_changer_left}" reflect="-1"/>
     </xacro:if>
 
-    <xacro:pal_sea_arm_end_effector_camera name="gripper_left_camera" parent="${end_effector_left_link}" type="realsense-d435" camera_position="up"/>
+    <xacro:pal_sea_arm_end_effector_camera name="gripper_left" parent="${end_effector_left_link}" type="realsense-d435" camera_position="up"/>
     
     <!-- FT sensors -->
     <xacro:if value="${has_ft_sensor_left}">
@@ -331,7 +331,7 @@
       <xacro:pal_sea_arm_end_effector name="gripper_right" parent="${end_effector_right_link}" type="${end_effector_right}" tool_changer="${tool_changer_right}" reflect="1"/>
     </xacro:if>
 
-    <xacro:pal_sea_arm_end_effector_camera name="gripper_right_camera" parent="${end_effector_right_link}" type="realsense-d435" camera_position="up"/>
+    <xacro:pal_sea_arm_end_effector_camera name="gripper_right" parent="${end_effector_right_link}" type="realsense-d435" camera_position="up"/>
 
     <!-- FT sensors -->
     <xacro:if value="${has_ft_sensor_right}">
