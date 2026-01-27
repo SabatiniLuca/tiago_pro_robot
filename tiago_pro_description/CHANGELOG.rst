@@ -2,6 +2,11 @@
 Changelog for package tiago_pro_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add parameter expose_collision_interface
+* Contributors: Noel Jimenez
+
 1.34.1 (2026-01-08)
 -------------------
 * rename calibration directory
