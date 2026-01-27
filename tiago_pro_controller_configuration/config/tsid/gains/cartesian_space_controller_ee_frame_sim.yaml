@@ -33,9 +33,11 @@ ${ARM_SIDE_PREFIX}_cartesian_space_controller_ee_frame:
           kd_x: 20.0
           kd_y: 20.0
           kd_z: 20.0
-          kd_roll: 7.0
+          kd_roll: 70.0
           kd_pitch: 70.0
           kd_yaw: 70.0
+          
+
           
 
 
