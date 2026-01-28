@@ -2,8 +2,8 @@
 Changelog for package tiago_pro_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.34.3 (2026-01-28)
+-------------------
 * Add parameter expose_safety_interface
 * Contributors: Noel Jimenez
 
