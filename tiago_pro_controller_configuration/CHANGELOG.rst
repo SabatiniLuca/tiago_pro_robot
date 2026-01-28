@@ -2,6 +2,12 @@
 Changelog for package tiago_pro_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* correcting gains
+* rm unused file
+* Contributors: vivianamorlando
+
 1.34.2 (2026-01-27)
 -------------------
 
