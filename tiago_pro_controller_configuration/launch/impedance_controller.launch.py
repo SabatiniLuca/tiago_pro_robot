@@ -71,13 +71,13 @@ def setup_controller_configuration(context: LaunchContext):
     chained_mode = (chained_mode_str == "true")
 
     param_file_unchained = os.path.join(
-        get_package_share_directory("pal_impedance_control"),
+        get_package_share_directory("tiago_pro_controller_configuration"),
         "config",
         "impedance_controller_arm.yaml",
     )
 
     param_file_chained = os.path.join(
-        get_package_share_directory("pal_impedance_control"),
+        get_package_share_directory("tiago_pro_controller_configuration"),
         "config",
         "impedance_controller_arm_jtc.yaml",
     )
