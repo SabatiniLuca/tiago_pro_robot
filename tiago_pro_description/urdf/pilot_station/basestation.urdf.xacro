@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <!--
 
-  Copyright (c) 2025 PAL Robotics S.L. All rights reserved.
+  Copyright (c) 2026 PAL Robotics S.L. All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -25,17 +25,17 @@
       name="${name}_base_link">
       <inertial>
         <origin
-          xyz="-0.01232 -4.7946E-05 0.35903"
-          rpy="0 0 0" />
+          xyz="0.0 0.0 0.0"
+          rpy="0.0 0.0 0.0" />
         <mass
-          value="40.604" />
+          value="1.0" />
         <inertia
-          ixx="1.8778"
-          ixy="7.8157E-06"
-          ixz="-0.0002729"
-          iyy="1.896"
-          iyz="-9.143E-05"
-          izz="0.69356" />
+          ixx="1.8157E-06"
+          ixy="1.8157E-06"
+          ixz="-1.8157E-06"
+          iyy="1.8157E-06"
+          iyz="1.8157E-06"
+          izz="1.8157E-06" />
       </inertial>
       <visual>
         <origin
