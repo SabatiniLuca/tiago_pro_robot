@@ -2,8 +2,8 @@
 Changelog for package tiago_pro_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.35.0 (2026-02-02)
+-------------------
 * modify motion for last joint
 * add motion planning for tleeop arms
 * change motions file for teleop

@@ -2,8 +2,8 @@
 Changelog for package tiago_pro_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.35.0 (2026-02-02)
+-------------------
 * fix inertia for basestation
 * update end effector camera base link (typo)
 * change name from teleop_basestation to pilot_station
