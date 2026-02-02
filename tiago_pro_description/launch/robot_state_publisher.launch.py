@@ -40,8 +40,12 @@ class LaunchArguments(LaunchArgumentsBase):
     arm_type_left: DeclareLaunchArgument = TiagoProArgs.arm_type_left
     end_effector_right: DeclareLaunchArgument = TiagoProArgs.end_effector_right
     end_effector_left: DeclareLaunchArgument = TiagoProArgs.end_effector_left
+    end_effector_telelop_right: DeclareLaunchArgument = TiagoProArgs.end_effector_teleop_right
+    end_effector_telelep_left: DeclareLaunchArgument = TiagoProArgs.end_effector_teleop_left
     ft_sensor_right: DeclareLaunchArgument = TiagoProArgs.ft_sensor_right
     ft_sensor_left: DeclareLaunchArgument = TiagoProArgs.ft_sensor_left
+    ft_sensor_teleop_left: DeclareLaunchArgument = TiagoProArgs.ft_sensor_teleop_left
+    ft_sensor_teleop_right: DeclareLaunchArgument = TiagoProArgs.ft_sensor_teleop_right
     wrist_model_right: DeclareLaunchArgument = TiagoProArgs.wrist_model_right
     wrist_model_left: DeclareLaunchArgument = TiagoProArgs.wrist_model_left
     camera_model: DeclareLaunchArgument = TiagoProArgs.camera_model
@@ -49,6 +53,8 @@ class LaunchArguments(LaunchArgumentsBase):
     tool_changer_right: DeclareLaunchArgument = TiagoProArgs.tool_changer_right
     tool_changer_left: DeclareLaunchArgument = TiagoProArgs.tool_changer_left
     torque_estimation: DeclareLaunchArgument = TiagoProArgs.torque_estimation
+    has_teleop_arms: DeclareLaunchArgument = TiagoProArgs.has_teleop_arms
+
     use_sim_time: DeclareLaunchArgument = CommonArgs.use_sim_time
     namespace: DeclareLaunchArgument = CommonArgs.namespace
     is_public_sim: DeclareLaunchArgument = CommonArgs.is_public_sim
@@ -82,8 +88,12 @@ def create_robot_description_param(context, *args, **kwargs):
         'arm_type_left': read_launch_argument('arm_type_left', context),
         'end_effector_right': read_launch_argument('end_effector_right', context),
         'end_effector_left': read_launch_argument('end_effector_left', context),
+        'end_effector_teleop_right': read_launch_argument('end_effector_teleop_right', context),
+        'end_effector_teleop_left': read_launch_argument('end_effector_teleop_left', context),
         'ft_sensor_right': read_launch_argument('ft_sensor_right', context),
         'ft_sensor_left': read_launch_argument('ft_sensor_left', context),
+        'ft_sensor_teleop_right': read_launch_argument('ft_sensor_teleop_right', context),
+        'ft_sensor_teleop_left': read_launch_argument('ft_sensor_teleop_left', context),
         'wrist_model_right': read_launch_argument('wrist_model_right', context),
         'wrist_model_left': read_launch_argument('wrist_model_left', context),
         'camera_model': read_launch_argument('camera_model', context),
@@ -94,6 +104,7 @@ def create_robot_description_param(context, *args, **kwargs):
         'use_sim_time': read_launch_argument('use_sim_time', context),
         'namespace': read_launch_argument('namespace', context),
         'is_public_sim': read_launch_argument('is_public_sim', context),
+        'has_teleop_arms': read_launch_argument('has_teleop_arms', context),
     }
 
     calibration_dir = tempfile.TemporaryDirectory()

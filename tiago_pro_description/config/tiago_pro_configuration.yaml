@@ -34,12 +34,28 @@ end_effector_left:
   description: 'End effector model left arm'
   choices: ['pal-pro-gripper', 'custom', 'no-end-effector', 'allegro-hand']
   default_value: 'pal-pro-gripper'
+end_effector_teleop_right:
+  description: 'End effector model right teleop arm'
+  choices: ['pal-pro-gripper', 'custom', 'no-end-effector', 'allegro-hand']
+  default_value: 'no-end-effector'
+end_effector_teleop_left:
+  description: 'End effector model left teleop arm'
+  choices: ['pal-pro-gripper', 'custom', 'no-end-effector', 'allegro-hand']
+  default_value: 'no-end-effector'
 ft_sensor_right:
   description: 'FT sensor model right arm'
   choices: ['ati', 'rokubi', 'no-ft-sensor']
   default_value: 'no-ft-sensor'
 ft_sensor_left:
   description: 'FT sensor model left arm'
+  choices: ['ati', 'rokubi', 'no-ft-sensor']
+  default_value: 'no-ft-sensor'
+ft_sensor_teleop_right:
+  description: 'FT sensor model right teleop arm'
+  choices: ['ati', 'rokubi', 'no-ft-sensor']
+  default_value: 'no-ft-sensor'
+ft_sensor_teleop_left:
+  description: 'FT sensor model left teleop arm'
   choices: ['ati', 'rokubi', 'no-ft-sensor']
   default_value: 'no-ft-sensor'
 base_type:
@@ -56,5 +72,9 @@ wheel_model:
   default_value: 'moog'
 torque_estimation:
   description: 'The arm has torque estimation'
+  choices: ['False', 'True']
+  default_value: 'False'
+has_teleop_arms:
+  description: 'The robot has teleop two extra arms'
   choices: ['False', 'True']
   default_value: 'False'

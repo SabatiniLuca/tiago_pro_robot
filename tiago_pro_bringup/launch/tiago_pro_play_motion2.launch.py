@@ -36,8 +36,11 @@ class LaunchArguments(LaunchArgumentsBase):
     arm_type_left: DeclareLaunchArgument = TiagoProArgs.arm_type_left
     end_effector_right: DeclareLaunchArgument = TiagoProArgs.end_effector_right
     end_effector_left: DeclareLaunchArgument = TiagoProArgs.end_effector_left
+    end_effector_teleop_right: DeclareLaunchArgument = TiagoProArgs.end_effector_teleop_right
+    end_effector_teleop_left: DeclareLaunchArgument = TiagoProArgs.end_effector_teleop_left
     wrist_model_right: DeclareLaunchArgument = TiagoProArgs.wrist_model_right
     wrist_model_left: DeclareLaunchArgument = TiagoProArgs.wrist_model_left
+    has_teleop_arms: DeclareLaunchArgument = TiagoProArgs.has_teleop_arms
     use_sim_time:  DeclareLaunchArgument = CommonArgs.use_sim_time
 
 
@@ -62,10 +65,11 @@ def create_play_motion_filename(context):
 
     pkg_name = 'tiago_pro_bringup'
     pkg_share_dir = get_package_share_directory(pkg_name)
-    arm_right = read_launch_argument('arm_type_right', context)
+    has_teleop_arms = read_launch_argument('has_teleop_arms', context)
     ee_right = read_launch_argument('end_effector_right', context)
-    arm_left = read_launch_argument('arm_type_left', context)
     ee_left = read_launch_argument('end_effector_left', context)
+    arm_right = read_launch_argument('arm_type_right', context)
+    arm_left = read_launch_argument('arm_type_left', context)
     wrist_model_right = read_launch_argument('wrist_model_right', context)
     wrist_model_left = read_launch_argument('wrist_model_left', context)
 
@@ -98,6 +102,9 @@ def create_play_motion_filename(context):
         ee_motions.append(f"tiago_pro_motions_{ee_left}_left.yaml")
     if ee_right != 'no-end-effector' and arm_right != 'no-arm':
         ee_motions.append(f"tiago_pro_motions_{ee_right}_right.yaml")
+    if has_teleop_arms:
+        ee_motions.append('tiago_pro_motions_teleop_arms.yaml')
+
     head_pkg = get_package_share_directory('tiago_pro_head_bringup')
 
     head_motions = [os.path.join(head_pkg, 'config', 'motions',
@@ -109,8 +116,9 @@ def create_play_motion_filename(context):
     motion_yamls = [os.path.join(motions_folder, f) for f in motion_files]
     motion_yamls.extend(head_motions)
     combined_yaml = merge_param_files(motion_yamls)
-
     motion_planner_file = f"motion_planner{hw_suffix}.yaml"
+    if has_teleop_arms:
+        motion_planner_file = f"motion_planner{hw_suffix}_teleop-arms.yaml"
     motion_planner_config = PathJoinSubstitution([
         pkg_share_dir,
         'config', 'motion_planner', motion_planner_file])

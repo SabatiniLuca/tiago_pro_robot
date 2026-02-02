@@ -39,6 +39,7 @@ class LaunchArguments(LaunchArgumentsBase):
     ft_sensor_right: DeclareLaunchArgument = TiagoProArgs.ft_sensor_right
     ft_sensor_left: DeclareLaunchArgument = TiagoProArgs.ft_sensor_left
     torque_estimation: DeclareLaunchArgument = TiagoProArgs.torque_estimation
+    has_teleop_arms: DeclareLaunchArgument = TiagoProArgs.has_teleop_arms
 
     use_sim_time: DeclareLaunchArgument = CommonArgs.use_sim_time
     is_public_sim: DeclareLaunchArgument = CommonArgs.is_public_sim
@@ -63,7 +64,6 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
                 'config', 'joint_state_broadcaster.yaml'))
          ],
         forwarding=False)
-
     launch_description.add_action(joint_state_broadcaster)
 
     joint_torque_state_broadcaster = GroupAction(
@@ -87,14 +87,12 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
                 'config', 'torso_controller.yaml'))
          ],
         forwarding=False)
-
     launch_description.add_action(torso_controller)
 
     # Head controller
     head_controller = include_scoped_launch_py_description(
         pkg_name="tiago_pro_head_controller_configuration",
         paths=["launch", "head_controller.launch.py"])
-
     launch_description.add_action(head_controller)
 
     # Add controller of right arm, end-effector and ft-sensor
@@ -107,10 +105,25 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
         function=configure_side_controllers, args=['left'],
         condition=LaunchConfigurationNotEquals('arm_type_left', 'no-arm')))
 
+    launch_description.add_action(OpaqueFunction(
+        function=configure_side_controllers, args=['teleop_right'],
+        condition=IfCondition(LaunchConfiguration("has_teleop_arms"))))
+
+    launch_description.add_action(OpaqueFunction(
+        function=configure_side_controllers, args=['teleop_left'],
+        condition=IfCondition(LaunchConfiguration("has_teleop_arms"))))
+
     return
 
 
 def configure_side_controllers(context, end_effector_side='right', *args, **kwargs):
+
+    is_teleop = end_effector_side.startswith('teleop')
+
+    if is_teleop:
+        root_link_str = "pilot_station_base_link"
+    else:
+        root_link_str = "torso_lift_link"
 
     end_effector_arg_name = concatenate_strings(
         strings=['end_effector', end_effector_side],
@@ -141,13 +154,16 @@ def configure_side_controllers(context, end_effector_side='right', *args, **kwar
     gravity_compensation_controller_effort = include_scoped_launch_py_description(
         pkg_name='pal_sea_arm_controller_configuration',
         paths=['launch', 'gravity_compensation_controller.launch.py'],
-        launch_arguments={"side": end_effector_side},
+        launch_arguments={"side": end_effector_side,
+                          "root_link": root_link_str},
         condition=UnlessCondition(LaunchConfiguration("is_public_sim")))
 
     gravity_compensation_controller_torque = include_scoped_launch_py_description(
         pkg_name='pal_sea_arm_controller_configuration',
         paths=['launch', 'gravity_compensation_controller.launch.py'],
-        launch_arguments={"side": end_effector_side, "mode": "torque"},
+        launch_arguments={"side": end_effector_side,
+                          "mode": "torque",
+                          "root_link": root_link_str},
         condition=IfCondition(LaunchConfiguration("torque_estimation")))
 
     use_sim_time = read_launch_argument("use_sim_time", context)
@@ -192,7 +208,8 @@ def configure_side_controllers(context, end_effector_side='right', *args, **kwar
 
     return [arm_controller, sea_state_broadcaster_controller,
             gravity_compensation_controller_effort,
-            gravity_compensation_controller_torque, inertia_shaping_controllers,
+            gravity_compensation_controller_torque,
+            inertia_shaping_controllers,
             end_effector_controller, ft_sensor_controller]
 
 
