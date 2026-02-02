@@ -2,6 +2,32 @@
 Changelog for package tiago_pro_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* fix inertia for basestation
+* update end effector camera base link (typo)
+* change name from teleop_basestation to pilot_station
+* reset calibration_offset
+* offsets for tp28
+* add camera to the wrist
+* update modules with ee_teleop
+* fix test allegro hand descr
+* fix test args
+* exclude allegro-hand for testing
+* add test for xacro
+* add end_effector_teleop_right and end_effector_teleop_left in files
+* add basestation urdf
+* fix FT sensors after rebase
+* rm non existing directory
+* add ft ros2 control
+* add ft sensor on teleop arms
+* fix urdf
+* add modules and fix default controllers
+* fix joint reflect
+* add teleop args
+* add teleop arms in the urdf
+* Contributors: ileniaperrella, vivianamorlando
+
 1.34.3 (2026-01-28)
 -------------------
 * Add parameter expose_safety_interface

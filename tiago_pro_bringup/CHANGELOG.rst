@@ -2,6 +2,22 @@
 Changelog for package tiago_pro_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* modify motion for last joint
+* add motion planning for tleeop arms
+* change motions file for teleop
+* update modules with ee_teleop
+* add test for xacro
+* add end_effector_teleop_right and end_effector_teleop_left in files
+* update play_motion2 namespace
+* add motion for teleop task
+* add ft sensor on teleop arms
+* add modules and fix default controllers
+* add motions for teleop arms (usable only with skip_planning)
+* add teleop args
+* Contributors: ileniaperrella
+
 1.34.3 (2026-01-28)
 -------------------
 
