@@ -66,13 +66,8 @@ def create_play_motion_filename(context):
     pkg_name = 'tiago_pro_bringup'
     pkg_share_dir = get_package_share_directory(pkg_name)
     has_teleop_arms = read_launch_argument('has_teleop_arms', context)
-
-    if has_teleop_arms := read_launch_argument('has_teleop_arms', context):
-        ee_right = read_launch_argument('end_effector_teleop_right', context)
-        ee_left = read_launch_argument('end_effector_teleop_left', context)
-    else:
-        ee_right = read_launch_argument('end_effector_right', context)
-        ee_left = read_launch_argument('end_effector_left', context)
+    ee_right = read_launch_argument('end_effector_right', context)
+    ee_left = read_launch_argument('end_effector_left', context)
     arm_right = read_launch_argument('arm_type_right', context)
     arm_left = read_launch_argument('arm_type_left', context)
     wrist_model_right = read_launch_argument('wrist_model_right', context)
@@ -122,6 +117,8 @@ def create_play_motion_filename(context):
     motion_yamls.extend(head_motions)
     combined_yaml = merge_param_files(motion_yamls)
     motion_planner_file = f"motion_planner{hw_suffix}.yaml"
+    if has_teleop_arms:
+        motion_planner_file = f"motion_planner{hw_suffix}_teleop-arms.yaml"
     motion_planner_config = PathJoinSubstitution([
         pkg_share_dir,
         'config', 'motion_planner', motion_planner_file])
