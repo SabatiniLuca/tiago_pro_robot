@@ -18,4 +18,5 @@ robot_state_publisher:
           camera_model:=@camera_model@
           laser_model:=@laser_model@
           torque_estimation:=@has_torque_estimation@
-          has_teleop_arms:=@has_teleop_arms@"
+          has_teleop_arms:=@has_teleop_arms@
+          has_wrist_camera:=@has_wrist_camera@"

@@ -34,12 +34,14 @@ arm_args = (
 wrist_args_left = (
     TiagoProArgs.wrist_model_left,
     TiagoProArgs.tool_changer_left,
-    TiagoProArgs.ft_sensor_left
+    TiagoProArgs.ft_sensor_left,
+    TiagoProArgs.has_wrist_camera
 )
 wrist_args_right = (
     TiagoProArgs.wrist_model_right,
     TiagoProArgs.tool_changer_right,
     TiagoProArgs.ft_sensor_right,
+    TiagoProArgs.has_wrist_camera
 )
 
 
@@ -89,3 +91,6 @@ test_xacro_ee = define_xacro_test(
     xacro_file_path, end_effector_right, wrist_args_right)
 test_xacro_teleop_active = define_xacro_test(
     xacro_file_path, force_arg_value(TiagoProArgs.has_teleop_arms, 'True'), teleop_args)
+test_xacro_wrist_camera = define_xacro_test(
+    xacro_file_path, force_arg_value(TiagoProArgs.has_wrist_camera,
+                                        'True'), wrist_args_left + wrist_args_right)

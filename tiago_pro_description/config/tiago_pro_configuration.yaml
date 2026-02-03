@@ -78,3 +78,7 @@ has_teleop_arms:
   description: 'The robot has teleop two extra arms'
   choices: ['False', 'True']
   default_value: 'False'
+has_wrist_camera:
+  description: 'The robot has wrist camera on the arms'
+  choices: ['False', 'True']
+  default_value: 'False'

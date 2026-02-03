@@ -49,3 +49,4 @@ class TiagoProArgs:
     laser_model: DLA = __arg_creator.get_argument("laser_model")
     torque_estimation: DLA = __arg_creator.get_argument("torque_estimation")
     has_teleop_arms: DLA = __arg_creator.get_argument("has_teleop_arms")
+    has_wrist_camera: DLA = __arg_creator.get_argument("has_wrist_camera")

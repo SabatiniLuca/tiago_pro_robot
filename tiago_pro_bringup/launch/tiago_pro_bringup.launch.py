@@ -45,6 +45,7 @@ class LaunchArguments(LaunchArgumentsBase):
     laser_model: DeclareLaunchArgument = TiagoProArgs.laser_model
     torque_estimation: DeclareLaunchArgument = TiagoProArgs.torque_estimation
     has_teleop_arms: DeclareLaunchArgument = TiagoProArgs.has_teleop_arms
+    has_wrist_camera: DeclareLaunchArgument = TiagoProArgs.has_wrist_camera
 
     use_sim_time: DeclareLaunchArgument = CommonArgs.use_sim_time
     namespace: DeclareLaunchArgument = CommonArgs.namespace
@@ -123,6 +124,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
                           "use_sim_time": launch_args.use_sim_time,
                           "is_public_sim": launch_args.is_public_sim,
                           "has_teleop_arms": launch_args.has_teleop_arms,
+                          "has_wrist_camera": launch_args.has_wrist_camera
                           })
 
     launch_description.add_action(robot_state_publisher)
