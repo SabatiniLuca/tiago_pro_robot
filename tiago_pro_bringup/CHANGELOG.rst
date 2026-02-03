@@ -2,8 +2,8 @@
 Changelog for package tiago_pro_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.35.1 (2026-02-03)
+-------------------
 * remove whitespace pipeline
 * fix condition in the play_motion2 teleop
 * Contributors: ileniaperrella
