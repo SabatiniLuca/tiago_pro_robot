@@ -60,19 +60,13 @@ def force_arg_value(arg_obj, value):
 if not os.environ.get('PAL_DISTRO'):
     end_effector_left = exclude_allegro_hand(TiagoProArgs.end_effector_left)
     end_effector_right = exclude_allegro_hand(TiagoProArgs.end_effector_right)
-    end_effector_teleop_left = exclude_allegro_hand(TiagoProArgs.end_effector_teleop_left)
-    end_effector_teleop_right = exclude_allegro_hand(TiagoProArgs.end_effector_teleop_right)
     gripper_args = (end_effector_left, end_effector_right)
 else:
     end_effector_left = TiagoProArgs.end_effector_left
     end_effector_right = TiagoProArgs.end_effector_right
-    end_effector_teleop_left = TiagoProArgs.end_effector_teleop_left
-    end_effector_teleop_right = TiagoProArgs.end_effector_teleop_right
     gripper_args = (end_effector_left, end_effector_right)
 
 teleop_args = (
-    end_effector_teleop_right,
-    end_effector_teleop_left,
     TiagoProArgs.ft_sensor_teleop_right,
     TiagoProArgs.ft_sensor_teleop_left,
 )

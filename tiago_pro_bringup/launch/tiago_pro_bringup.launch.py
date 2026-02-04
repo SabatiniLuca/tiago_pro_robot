@@ -31,8 +31,6 @@ class LaunchArguments(LaunchArgumentsBase):
     arm_type_left: DeclareLaunchArgument = TiagoProArgs.arm_type_left
     end_effector_right: DeclareLaunchArgument = TiagoProArgs.end_effector_right
     end_effector_left: DeclareLaunchArgument = TiagoProArgs.end_effector_left
-    end_effector_teleop_right: DeclareLaunchArgument = TiagoProArgs.end_effector_teleop_right
-    end_effector_teleop_left: DeclareLaunchArgument = TiagoProArgs.end_effector_teleop_left
     ft_sensor_right: DeclareLaunchArgument = TiagoProArgs.ft_sensor_right
     ft_sensor_left: DeclareLaunchArgument = TiagoProArgs.ft_sensor_left
     ft_sensor_teleop_left: DeclareLaunchArgument = TiagoProArgs.ft_sensor_teleop_left
@@ -60,8 +58,6 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
                           "arm_type_left": launch_args.arm_type_left,
                           "end_effector_right": launch_args.end_effector_right,
                           "end_effector_left": launch_args.end_effector_left,
-                          "end_effector_teleop_right": launch_args.end_effector_teleop_right,
-                          "end_effector_teleop_left": launch_args.end_effector_teleop_left,
                           "ft_sensor_right": launch_args.ft_sensor_right,
                           "ft_sensor_left": launch_args.ft_sensor_left,
                           "ft_sensor_teleop_right": launch_args.ft_sensor_teleop_right,
@@ -81,8 +77,6 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
                           "arm_type_left": launch_args.arm_type_left,
                           "end_effector_right": launch_args.end_effector_right,
                           "end_effector_left": launch_args.end_effector_left,
-                          "end_effector_teleop_right": launch_args.end_effector_teleop_right,
-                          "end_effector_teleop_left": launch_args.end_effector_teleop_left,
                           "wrist_model_right": launch_args.wrist_model_right,
                           "wrist_model_left": launch_args.wrist_model_left,
                           "use_sim_time": launch_args.use_sim_time,
@@ -106,8 +100,6 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
                           "arm_type_left": launch_args.arm_type_left,
                           "end_effector_right": launch_args.end_effector_right,
                           "end_effector_left": launch_args.end_effector_left,
-                          "end_effector_teleop_right": launch_args.end_effector_teleop_right,
-                          "end_effector_teleop_left": launch_args.end_effector_teleop_left,
                           "ft_sensor_right": launch_args.ft_sensor_right,
                           "ft_sensor_left": launch_args.ft_sensor_left,
                           "ft_sensor_teleop_right": launch_args.ft_sensor_teleop_right,
@@ -135,9 +127,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
         launch_arguments={"arm_type_right": launch_args.arm_type_right,
                           "arm_type_left": launch_args.arm_type_left,
                           "end_effector_right": launch_args.end_effector_right,
-                          "end_effector_left": launch_args.end_effector_left,
-                          "end_effector_teleop_right": launch_args.end_effector_teleop_right,
-                          "end_effector_teleop_left": launch_args.end_effector_teleop_left
+                          "end_effector_left": launch_args.end_effector_left
                           })
 
     launch_description.add_action(gripper_wrapper)

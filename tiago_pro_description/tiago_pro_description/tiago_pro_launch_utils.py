@@ -18,8 +18,6 @@ def get_tiago_pro_hw_suffix(
     arm_left: str = "no-arm",
     end_effector_right: str = "no-end-effector",
     end_effector_left: str = "no-end-effector",
-    end_effector_teleop_right: str = "no-end-effector",
-    end_effector_teleop_left: str = "no-end-effector",
     ft_sensor_right: str = "no-ft-sensor",
     ft_sensor_left: str = "no-ft-sensor",
     ft_sensor_teleop_right: str = "no-ft-sensor",
@@ -32,18 +30,10 @@ def get_tiago_pro_hw_suffix(
 
     The arguments are read as string
     """
-    if has_teleop_arms:
-        right_suffix = get_single_arm_hw_suffix(
-            arm_right, end_effector_teleop_right, ft_sensor_teleop_right
-        )
-        left_suffix = get_single_arm_hw_suffix(
-            arm_left, end_effector_teleop_left, ft_sensor_teleop_left
-        )
-    else:
-        right_suffix = get_single_arm_hw_suffix(
-            arm_right, end_effector_right, ft_sensor_right
-        )
-        left_suffix = get_single_arm_hw_suffix(arm_left, end_effector_left, ft_sensor_left)
+    right_suffix = get_single_arm_hw_suffix(
+        arm_right, end_effector_right, ft_sensor_right
+    )
+    left_suffix = get_single_arm_hw_suffix(arm_left, end_effector_left, ft_sensor_left)
 
     suffix = left_suffix + right_suffix
     return suffix
@@ -74,4 +64,3 @@ def get_single_arm_hw_suffix(
         components.append(ft_sensor)
 
     suffix = '_' + '_'.join(components)
-    return suffix

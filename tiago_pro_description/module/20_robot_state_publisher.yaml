@@ -5,8 +5,6 @@ robot_state_publisher:
           arm_type_left:=@arm_type_left@
           end_effector_right:=@end_effector_right@
           end_effector_left:=@end_effector_left@
-          end_effector_teleop_right:=@end_effector_teleop_right@
-          end_effector_teleop_left:=@end_effector_teleop_left@
           ft_sensor_right:=@ft_sensor_right@
           ft_sensor_left:=@ft_sensor_left@
           ft_sensor_teleop_right:=@ft_sensor_teleop_right@

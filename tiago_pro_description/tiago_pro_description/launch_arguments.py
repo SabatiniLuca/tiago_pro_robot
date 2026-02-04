@@ -37,8 +37,6 @@ class TiagoProArgs:
     tool_changer_left: DLA = __arg_creator.get_argument("tool_changer_left")
     end_effector_right: DLA = __arg_creator.get_argument("end_effector_right")
     end_effector_left: DLA = __arg_creator.get_argument("end_effector_left")
-    end_effector_teleop_right: DLA = __arg_creator.get_argument("end_effector_teleop_right")
-    end_effector_teleop_left: DLA = __arg_creator.get_argument("end_effector_teleop_left")
     ft_sensor_right: DLA = __arg_creator.get_argument("ft_sensor_right")
     ft_sensor_left: DLA = __arg_creator.get_argument("ft_sensor_left")
     ft_sensor_teleop_right: DLA = __arg_creator.get_argument(
