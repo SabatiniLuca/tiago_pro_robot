@@ -37,8 +37,6 @@ class TiagoProArgs:
     tool_changer_left: DLA = __arg_creator.get_argument("tool_changer_left")
     end_effector_right: DLA = __arg_creator.get_argument("end_effector_right")
     end_effector_left: DLA = __arg_creator.get_argument("end_effector_left")
-    end_effector_teleop_right: DLA = __arg_creator.get_argument("end_effector_teleop_right")
-    end_effector_teleop_left: DLA = __arg_creator.get_argument("end_effector_teleop_left")
     ft_sensor_right: DLA = __arg_creator.get_argument("ft_sensor_right")
     ft_sensor_left: DLA = __arg_creator.get_argument("ft_sensor_left")
     ft_sensor_teleop_right: DLA = __arg_creator.get_argument(
@@ -49,3 +47,4 @@ class TiagoProArgs:
     laser_model: DLA = __arg_creator.get_argument("laser_model")
     torque_estimation: DLA = __arg_creator.get_argument("torque_estimation")
     has_teleop_arms: DLA = __arg_creator.get_argument("has_teleop_arms")
+    has_wrist_camera: DLA = __arg_creator.get_argument("has_wrist_camera")

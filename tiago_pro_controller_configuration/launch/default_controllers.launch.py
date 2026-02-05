@@ -126,7 +126,7 @@ def configure_side_controllers(context, end_effector_side='right', *args, **kwar
         root_link_str = "torso_lift_link"
 
     end_effector_arg_name = concatenate_strings(
-        strings=['end_effector', end_effector_side],
+        strings=['end_effector', end_effector_side.replace('teleop_', '')],
         delimiter='_',
         skip_empty=True)
 

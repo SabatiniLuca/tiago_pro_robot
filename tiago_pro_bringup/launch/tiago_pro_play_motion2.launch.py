@@ -36,8 +36,6 @@ class LaunchArguments(LaunchArgumentsBase):
     arm_type_left: DeclareLaunchArgument = TiagoProArgs.arm_type_left
     end_effector_right: DeclareLaunchArgument = TiagoProArgs.end_effector_right
     end_effector_left: DeclareLaunchArgument = TiagoProArgs.end_effector_left
-    end_effector_teleop_right: DeclareLaunchArgument = TiagoProArgs.end_effector_teleop_right
-    end_effector_teleop_left: DeclareLaunchArgument = TiagoProArgs.end_effector_teleop_left
     wrist_model_right: DeclareLaunchArgument = TiagoProArgs.wrist_model_right
     wrist_model_left: DeclareLaunchArgument = TiagoProArgs.wrist_model_left
     has_teleop_arms: DeclareLaunchArgument = TiagoProArgs.has_teleop_arms
@@ -117,7 +115,7 @@ def create_play_motion_filename(context):
     motion_yamls.extend(head_motions)
     combined_yaml = merge_param_files(motion_yamls)
     motion_planner_file = f"motion_planner{hw_suffix}.yaml"
-    if has_teleop_arms == 'true':
+    if has_teleop_arms:
         motion_planner_file = f"motion_planner{hw_suffix}_teleop-arms.yaml"
     motion_planner_config = PathJoinSubstitution([
         pkg_share_dir,
