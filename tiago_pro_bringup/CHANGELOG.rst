@@ -2,6 +2,13 @@
 Changelog for package tiago_pro_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* delete teleop end effectors
+* fix play_motion2
+* add enable wrist camera option
+* Contributors: ileniaperrella
+
 1.35.1 (2026-02-03)
 -------------------
 * remove whitespace pipeline

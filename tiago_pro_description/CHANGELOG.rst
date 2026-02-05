@@ -2,6 +2,15 @@
 Changelog for package tiago_pro_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* test fix
+* fix pipeline
+* fix test identation
+* delete teleop end effectors
+* add enable wrist camera option
+* Contributors: ileniaperrella
+
 1.35.1 (2026-02-03)
 -------------------
 
