@@ -86,5 +86,5 @@ test_xacro_ee = define_xacro_test(
 test_xacro_teleop_active = define_xacro_test(
     xacro_file_path, force_arg_value(TiagoProArgs.has_teleop_arms, 'True'), teleop_args)
 test_xacro_wrist_camera = define_xacro_test(
-    xacro_file_path, force_arg_value(TiagoProArgs.has_wrist_camera, 'True'), 
+    xacro_file_path, force_arg_value(TiagoProArgs.has_wrist_camera, 'True'),
     wrist_args_left + wrist_args_right)
