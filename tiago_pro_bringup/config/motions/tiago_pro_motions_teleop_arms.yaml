@@ -58,3 +58,15 @@
           name: Starting pose for teleoperate the robot arms
           usage: demo
           description: Starting pose for teleoperate the robot arms
+
+      boxing_pilot_arms:
+        joints: [arm_teleop_left_1_joint, arm_teleop_left_2_joint, arm_teleop_left_3_joint, arm_teleop_left_4_joint, arm_teleop_left_5_joint, arm_teleop_left_6_joint, arm_teleop_left_7_joint, arm_teleop_right_1_joint, arm_teleop_right_2_joint, arm_teleop_right_3_joint, arm_teleop_right_4_joint, arm_teleop_right_5_joint, arm_teleop_right_6_joint, arm_teleop_right_7_joint]
+        times_from_start: [0.0, 5.0, 7.0, 9.0]
+        positions: [1.8557, -1.5919, 0.35538, -2.0502, 0.10524, -1.5976, 0.0, -1.8614, -1.6008, -0.34892, -1.9818, 0.10153, -1.5829, 0.0,
+                    0.26, -1.6008, 0.3489, -1.9818, 0.0, -1.5829, 0.0, -0.26, -1.6008, -0.3489, -1.9818, -0.0, -1.5829, 0.0,
+                    0.36, -1.83, 0.47, -2.35, 0.0, -1.2, 0.0, -0.36, -1.83, -0.47, -2.35, -0.0, -1.2, 0.0,
+                    0.24, -1.89, 0.35, -0.99, 0.0, -1.461, 0.0, -0.24, -1.89, -0.35, -0.99, 0.0, -1.461, 0.0]
+        meta:
+          name: Boxing teleop arms
+          usage: demo
+          description: Boxing with the two teleop arms
