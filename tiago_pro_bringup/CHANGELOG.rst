@@ -2,6 +2,12 @@
 Changelog for package tiago_pro_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* add boxing motion for teleop station
+* fix param bug
+* Contributors: ileniaperrella, matteovillani
+
 1.35.2 (2026-02-05)
 -------------------
 * delete teleop end effectors

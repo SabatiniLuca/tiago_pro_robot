@@ -2,6 +2,9 @@
 Changelog for package tiago_pro_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 1.35.2 (2026-02-05)
 -------------------
 * delete teleop end effectors
