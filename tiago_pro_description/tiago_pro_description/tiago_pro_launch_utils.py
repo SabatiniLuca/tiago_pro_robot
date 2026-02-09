@@ -64,3 +64,4 @@ def get_single_arm_hw_suffix(
         components.append(ft_sensor)
 
     suffix = '_' + '_'.join(components)
+    return suffix
