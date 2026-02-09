@@ -2,8 +2,8 @@
 Changelog for package tiago_pro_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.35.3 (2026-02-09)
+-------------------
 * fix param bug
 * Contributors: matteovillani
 
