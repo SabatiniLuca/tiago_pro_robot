@@ -2,6 +2,13 @@
 Changelog for package tiago_pro_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Fix coma
+* Add new limits values
+* Add new parameter for the limits
+* Contributors: Aina
+
 1.35.4 (2026-02-10)
 -------------------
 * adding calibration_tool param
