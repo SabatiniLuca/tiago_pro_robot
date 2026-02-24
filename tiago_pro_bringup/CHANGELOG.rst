@@ -2,6 +2,11 @@
 Changelog for package tiago_pro_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* change boxing teleop motion
+* Contributors: susannamastromauro
+
 1.36.0 (2026-02-18)
 -------------------
 
