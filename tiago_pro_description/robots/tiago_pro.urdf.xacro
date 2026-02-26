@@ -209,7 +209,7 @@
   <xacro:if value="${laser_model not in ['no-laser', 'sick-571']}">
     <xacro:wrong_laser_model />
   </xacro:if>
-  <xacro:if value="${wheel_model not in ['moog', 'no-wheels']}">
+  <xacro:if value="${wheel_model not in ['moog', 'grassland', 'no-wheels']}">
     <xacro:wrong_wheel_model />
   </xacro:if>
 
