@@ -60,7 +60,7 @@ camera_model:
   default_value: 'realsense-d435'
 wheel_model:
   description: 'Wheel model'
-  choices: ['moog']
+  choices: ['moog', 'no-wheels']
   default_value: 'moog'
 torque_estimation:
   description: 'The arm has torque estimation'
