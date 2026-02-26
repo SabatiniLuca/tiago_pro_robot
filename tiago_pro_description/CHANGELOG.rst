@@ -2,8 +2,8 @@
 Changelog for package tiago_pro_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.36.2 (2026-02-26)
+-------------------
 * Add support for no-wheels
 * Contributors: Jordan Palacios
 
