@@ -50,3 +50,4 @@ class TiagoProArgs:
     has_wrist_camera: DLA = __arg_creator.get_argument("has_wrist_camera")
     calibration_tool: DLA = __arg_creator.get_argument("calibration_tool")
     limits_v2: DLA = __arg_creator.get_argument("limits_v2")
+    wheel_model: DLA = __arg_creator.get_argument("wheel_model")

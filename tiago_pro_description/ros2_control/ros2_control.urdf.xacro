@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- 
+<!--
   Copyright (c) 2024 PAL Robotics S.L. All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,11 +22,11 @@
     <xacro:ros2_control_wheel side="rear_right" />
     <xacro:ros2_control_wheel side="rear_left" />
   </xacro:macro>
-  
+
   <xacro:macro name="allegro_ros2_control" params="side allegro_can pid_controllers">
     <ros2_control name="ros2_control_allegro_hand_system_${side}" type="system" rw_rate="200">
       <hardware>
-        <plugin>allegro_hand_system/AllegroHandSystem</plugin> 
+        <plugin>allegro_hand_system/AllegroHandSystem</plugin>
         <param name="${can_device_name}">${allegro_can}</param>
         <param name="side">${side}</param>
       </hardware>
@@ -134,6 +134,8 @@
     <xacro:arg name="ft_sensor_teleop_left" default="no-ft-sensor"/>
     <xacro:arg name="ft_sensor_teleop_right" default="no-ft-sensor"/>
 
+    <xacro:arg name="wheel_model" default="moog"/>
+
     <xacro:arg name="calibration_offset_dir" default="$(find tiago_pro_description)/urdf/calibration" />
     <!-- TODO-->
 
@@ -150,6 +152,8 @@
     <xacro:property name="has_arm_left" value="${arm_type_left != 'no-arm'}" />
     <xacro:property name="has_arm_right" value="${arm_type_right != 'no-arm'}" />
     <xacro:property name="can_device_name" value="can_device" />
+    <xacro:property name="wheel_model" value="$(arg wheel_model)" />
+
     <xacro:include filename="$(find omni_base_description)/urdf/wheels/wheel.ros2_control.xacro" />
 
     <xacro:include filename="$(find tiago_pro_description)/urdf/torso/torso.ros2_control.xacro" />
@@ -211,17 +215,19 @@
 
     <!-- Hardware -->
     <xacro:unless value="$(arg use_sim_time)">
-      <!-- CAN system -->
-      <ros2_control name="ros2_control_tiago_pro_system_can" type="system" rw_rate="100">
-        <hardware>
-          <plugin>robot_control/RobotControl</plugin>
-          <param name="group">can</param>
-        </hardware>
+      <xacro:if value="${wheel_model == 'moog'}">
+        <!-- CAN system -->
+        <ros2_control name="ros2_control_tiago_pro_system_can" type="system" rw_rate="100">
+          <hardware>
+            <plugin>robot_control/RobotControl</plugin>
+            <param name="group">can</param>
+          </hardware>
 
-        <!-- wheels -->
-        <xacro:ros2_control_wheels />
+          <!-- wheels -->
+          <xacro:ros2_control_wheels />
 
-      </ros2_control>
+        </ros2_control>
+      </xacro:if>
 
       <!-- Dynamixels system -->
       <ros2_control name="ros2_control_tiago_pro_system_dynamixel" type="system" rw_rate="100">
@@ -248,6 +254,8 @@
 
         <!-- arms -->
         <xacro:ros2_control_arms/>
+
+        <!-- torso -->
         <xacro:ros2_control_torso name="torso_lift" reduction="1.0" />
 
       </ros2_control>
