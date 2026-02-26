@@ -258,6 +258,11 @@
         <!-- torso -->
         <xacro:ros2_control_torso name="torso_lift" reduction="1.0" />
 
+        <xacro:if value="${wheel_model == 'grassland'}">
+          <!-- wheels -->
+          <xacro:ros2_control_wheels />
+        </xacro:if>
+
       </ros2_control>
       <xacro:arg name="pid_controllers" default="true"/>
 
