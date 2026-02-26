@@ -2,6 +2,11 @@
 Changelog for package tiago_pro_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Adding new wheel_type grassland. Used in the ethercat system
+* Contributors: Jordan Palacios
+
 1.36.2 (2026-02-26)
 -------------------
 * Add support for no-wheels
