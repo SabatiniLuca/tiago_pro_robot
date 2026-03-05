@@ -2,8 +2,8 @@
 Changelog for package tiago_pro_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.0.0 (2026-03-05)
+------------------
 * Add pal configuration
 * Switch to pal_joy + fix flake
 * Update Joystick Layout
