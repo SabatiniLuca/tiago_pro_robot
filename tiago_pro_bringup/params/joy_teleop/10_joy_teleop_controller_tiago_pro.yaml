@@ -1,53 +1,45 @@
-joy_teleop:
+/joy_teleop:
+
+  use_if:
+    robot_type: tiago_pro
+
   ros__parameters:
 
-    joy_priority:
+    default_controller_left:
       type: action
-      interface_type: twist_mux_msgs/action/JoyPriority
-      action_name: joy_priority_action
-      buttons: [10, 6]
+      interface_type: change_controllers_interfaces/action/Switch
+      action_name: /change_controllers
+      action_goal:
+        start_controllers: [arm_left_controller]
+      buttons: [2]
+      axes_negative: [4]
 
-    assisted_teleop_priority:
+    gravity_controller_left:
       type: action
-      interface_type: twist_mux_msgs/action/JoyPriority
-      action_name: assisted_teleop_priority_action
-      buttons: [10, 4]
+      interface_type: change_controllers_interfaces/action/Switch
+      action_name: /change_controllers
+      action_goal:
+        start_controllers: [arm_left_gravity_compensation_controller]
+      buttons: [3]
+      axes_negative: [4]
 
-    joy_turbo_decrease:
+    default_controller_right:
       type: action
-      interface_type: twist_mux_msgs/action/JoyTurbo
-      action_name: joy_turbo_decrease
-      buttons: [10, 0]
+      interface_type: change_controllers_interfaces/action/Switch
+      action_name: /change_controllers
+      action_goal:
+        start_controllers: [arm_right_controller]
+      buttons: [2]
+      axes_negative: [5]
 
-    joy_turbo_increase:
+    gravity_controller_right:
       type: action
-      interface_type: twist_mux_msgs/action/JoyTurbo
-      action_name: joy_turbo_increase
-      buttons: [10, 3]
-
-    joy_turbo_angular_decrease:
-      type: action
-      interface_type: twist_mux_msgs/action/JoyTurbo
-      action_name: joy_turbo_angular_decrease
-      buttons: [10, 2]
-
-    joy_turbo_angular_increase:
-      type: action
-      interface_type: twist_mux_msgs/action/JoyTurbo
-      action_name: joy_turbo_angular_increase
-      buttons: [10, 1]
-
-    joy_turbo_reset_left:
-      type: action
-      interface_type: twist_mux_msgs/action/JoyTurbo
-      action_name: joy_turbo_reset
-      buttons: [10, 7]
-
-    joy_turbo_reset_right:
-      type: action
-      interface_type: twist_mux_msgs/action/JoyTurbo
-      action_name: joy_turbo_reset
-      buttons: [10, 8]
+      interface_type: change_controllers_interfaces/action/Switch
+      action_name: /change_controllers
+      action_goal:
+        start_controllers: [arm_right_gravity_compensation_controller]
+      buttons: [3]
+      axes_negative: [5]
 
     torso_up:
       type: action
@@ -162,39 +154,3 @@ joy_teleop:
         increment_by: [-0.1, 0.0]
       buttons: [9]
       axes_negative: [0]
-
-    default_controller_left:
-      type: action
-      interface_type: change_controllers_interfaces/action/Switch
-      action_name: /change_controllers
-      action_goal:
-        start_controllers: [arm_left_controller]
-      buttons: [2]
-      axes_negative: [4]
-
-    gravity_controller_left:
-      type: action
-      interface_type: change_controllers_interfaces/action/Switch
-      action_name: /change_controllers
-      action_goal:
-        start_controllers: [arm_left_gravity_compensation_controller]
-      buttons: [3]
-      axes_negative: [4]
-
-    default_controller_right:
-      type: action
-      interface_type: change_controllers_interfaces/action/Switch
-      action_name: /change_controllers
-      action_goal:
-        start_controllers: [arm_right_controller]
-      buttons: [2]
-      axes_negative: [5]
-
-    gravity_controller_right:
-      type: action
-      interface_type: change_controllers_interfaces/action/Switch
-      action_name: /change_controllers
-      action_goal:
-        start_controllers: [arm_right_gravity_compensation_controller]
-      buttons: [3]
-      axes_negative: [5]

@@ -16,13 +16,9 @@ import os
 from ament_index_python.packages import get_package_share_directory
 
 from launch import LaunchDescription
-from launch.substitutions import LaunchConfiguration
-from launch.actions import DeclareLaunchArgument, OpaqueFunction, SetLaunchConfiguration
+from launch.actions import DeclareLaunchArgument
 from launch_ros.actions import Node
 from launch.conditions import LaunchConfigurationNotEquals
-
-from launch_pal.arg_utils import read_launch_argument
-
 from launch_pal.arg_utils import LaunchArgumentsBase
 from tiago_pro_description.launch_arguments import TiagoProArgs
 
@@ -44,33 +40,36 @@ class LaunchArguments(LaunchArgumentsBase):
 
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
 
-    launch_description.add_action(OpaqueFunction(
-        function=create_joy_teleop_filename_gripper_right))
-    launch_description.add_action(OpaqueFunction(
-        function=create_joy_teleop_filename_gripper_left))
+    from launch_pal import get_pal_configuration
+    # PAL helper function to fetch the configuration for this package,
+    # which might be installed also from other packages
+    joy_teleop_config = get_pal_configuration(
+        pkg="joy_teleop",
+        node="joy_teleop",
+        ld=launch_description)
 
     joy_teleop_node = Node(
         package='joy_teleop',
         executable='joy_teleop',
-        parameters=[os.path.join(get_package_share_directory('tiago_pro_bringup'), 'config',
-                                 'joy_teleop', "joy_teleop_omni_base.yaml"),
-                    LaunchConfiguration("teleop_config_gripper_right"),
-                    LaunchConfiguration("teleop_config_gripper_left"),
-                    os.path.join(get_package_share_directory('tiago_pro_bringup'), 'config',
-                                 'joy_teleop', "joy_teleop_common.yaml")],
-        remappings=[('cmd_vel', LaunchConfiguration('cmd_vel'))])
+        parameters=joy_teleop_config['parameters'],
+        remappings=joy_teleop_config['remappings'],)
 
     launch_description.add_action(joy_teleop_node)
 
-    pkg_dir = get_package_share_directory('tiago_pro_bringup')
+    joy_config = get_pal_configuration(
+        pkg="joystick",
+        node="joystick",
+        ld=launch_description)
 
     joy_node = Node(
         package='pal_joy',
         executable='game_controller_node',
         name='joystick',
-        parameters=[os.path.join(pkg_dir, 'config', 'joy_teleop', 'joy_config.yaml')])
+        parameters=joy_config['parameters'])
 
     launch_description.add_action(joy_node)
+
+    pkg_dir = get_package_share_directory('tiago_pro_bringup')
 
     joystick_analyzer = Node(
         package='diagnostic_aggregator',
@@ -156,40 +155,6 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
     launch_description.add_action(gripper_incrementer_server_left)
 
     return
-
-
-def create_joy_teleop_filename_gripper_right(context):
-
-    end_effector_right = read_launch_argument("end_effector_right", context)
-
-    joy_teleop_file = f"joy_teleop_{end_effector_right}_right.yaml"
-    pkg_dir = get_package_share_directory('tiago_pro_bringup')
-
-    joy_teleop_path = os.path.join(
-        pkg_dir,
-        "config",
-        "joy_teleop",
-        joy_teleop_file,
-    )
-
-    return [SetLaunchConfiguration("teleop_config_gripper_right", joy_teleop_path)]
-
-
-def create_joy_teleop_filename_gripper_left(context):
-
-    end_effector_left = read_launch_argument("end_effector_left", context)
-    pkg_dir = get_package_share_directory('tiago_pro_bringup')
-
-    joy_teleop_file = f"joy_teleop_{end_effector_left}_left.yaml"
-
-    joy_teleop_path = os.path.join(
-        pkg_dir,
-        "config",
-        "joy_teleop",
-        joy_teleop_file,
-    )
-
-    return [SetLaunchConfiguration("teleop_config_gripper_left", joy_teleop_path)]
 
 
 def generate_launch_description():
