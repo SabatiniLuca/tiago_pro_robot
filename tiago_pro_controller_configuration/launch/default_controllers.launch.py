@@ -76,7 +76,13 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
                 'config', 'joint_torque_state_broadcaster.yaml'))
          ],
         forwarding=False,
-        condition=IfCondition(LaunchConfiguration("torque_estimation"))
+        condition=IfCondition(
+            PythonExpression([
+                "(", LaunchConfiguration("torque_estimation"), ") and (('",
+                LaunchConfiguration("wrist_model_right"), "' != 'short-wrist') or ('",
+                LaunchConfiguration("wrist_model_left"), "' != 'short-wrist'))"
+            ])
+        )
     )
     launch_description.add_action(joint_torque_state_broadcaster)
 
@@ -153,7 +159,8 @@ def configure_side_controllers(context, end_effector_side='right', *args, **kwar
         condition=IfCondition(
             PythonExpression(
                 ["'", LaunchConfiguration('use_sim_time'), "' == 'False' and '",
-                 LaunchConfiguration('torque_estimation'), "' == 'True'"]
+                 LaunchConfiguration('torque_estimation'), "' == 'True' and not ('",
+                 wrist_model, "' == 'short-wrist')"]
             )
         ))
 
@@ -189,7 +196,11 @@ def configure_side_controllers(context, end_effector_side='right', *args, **kwar
         pkg_name='pal_sea_arm_controller_configuration',
         paths=['launch', 'inertia_shaping_controllers.launch.py'],
         launch_arguments={"side": end_effector_side},
-        condition=IfCondition(LaunchConfiguration("torque_estimation")))
+        condition=IfCondition(
+            PythonExpression([
+                "(", LaunchConfiguration("torque_estimation"), ") and not ('",
+                wrist_model, "' == 'short-wrist')"])
+        ))
 
     end_effector = read_launch_argument(end_effector_arg_name, context)
     end_effector_underscore = end_effector.replace('-', '_')
