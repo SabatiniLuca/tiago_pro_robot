@@ -2,6 +2,11 @@
 Changelog for package tiago_pro_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add safety incrementer controller + reduce increment to be able to close more
+* Contributors: thomas.peyrucain
+
 2.0.0 (2026-03-05)
 ------------------
 * Add pal configuration
