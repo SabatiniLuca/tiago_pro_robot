@@ -7,8 +7,8 @@
 
     close_gripper_left:
       action_goal:
-        increment_by: [0.01]
+        increment_by: [-0.005]
 
     open_gripper_left:
       action_goal:
-        increment_by: [-0.01]
+        increment_by: [0.005]
