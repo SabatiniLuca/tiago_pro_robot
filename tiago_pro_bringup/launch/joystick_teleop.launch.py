@@ -118,6 +118,46 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
 
     launch_description.add_action(safe_command_torso)
 
+    safe_command_gripper_right = Node(
+        package='collision_aware_joint_trajectory_wrapper',
+        executable='safe_command_node',
+        name='safe_command_node',
+        namespace='gripper_right_controller',
+        output='screen',
+        parameters=[{
+            'controller_name': 'gripper_right_controller'
+        }],
+        remappings=[
+            ('/gripper_right_controller/robot_description',
+             '/robot_description'),
+            ('/gripper_right_controller/robot_description_semantic',
+             '/robot_description_semantic'),
+        ],
+        condition=LaunchConfigurationNotEquals('end_effector_right', 'no-end-effector')
+    )
+
+    launch_description.add_action(safe_command_gripper_right)
+
+    safe_command_gripper_left = Node(
+        package='collision_aware_joint_trajectory_wrapper',
+        executable='safe_command_node',
+        name='safe_command_node',
+        namespace='gripper_left_controller',
+        output='screen',
+        parameters=[{
+            'controller_name': 'gripper_left_controller'
+        }],
+        remappings=[
+            ('/gripper_left_controller/robot_description',
+             '/robot_description'),
+            ('/gripper_left_controller/robot_description_semantic',
+             '/robot_description_semantic'),
+        ],
+        condition=LaunchConfigurationNotEquals('end_effector_left', 'no-end-effector')
+    )
+
+    launch_description.add_action(safe_command_gripper_left)
+
     torso_incrementer_server = Node(
         package='joy_teleop',
         executable='incrementer_server',
@@ -141,6 +181,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
         executable='incrementer_server',
         name='incrementer_right',
         namespace='gripper_right_controller',
+        remappings=[('joint_trajectory', 'safe_command')],
         condition=LaunchConfigurationNotEquals('end_effector_right', 'no-end-effector'))
 
     launch_description.add_action(gripper_incrementer_server_right)
@@ -150,6 +191,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
         executable='incrementer_server',
         name='incrementer_left',
         namespace='gripper_left_controller',
+        remappings=[('joint_trajectory', 'safe_command')],
         condition=LaunchConfigurationNotEquals('end_effector_left', 'no-end-effector'))
 
     launch_description.add_action(gripper_incrementer_server_left)
