@@ -2,6 +2,11 @@
 Changelog for package tiago_pro_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add support for short-wrist
+* Contributors: Noel Jimenez
+
 2.0.1 (2026-03-19)
 ------------------
 * Add safety incrementer controller + reduce increment to be able to close more

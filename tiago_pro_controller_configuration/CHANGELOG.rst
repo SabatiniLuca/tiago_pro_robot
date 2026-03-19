@@ -2,6 +2,12 @@
 Changelog for package tiago_pro_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Do not launch torque estimation controllers with short-wrist
+* Add support for short-wrist
+* Contributors: Noel Jimenez
+
 2.0.1 (2026-03-19)
 ------------------
 
