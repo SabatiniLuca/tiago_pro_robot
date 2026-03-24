@@ -2,6 +2,9 @@
 Changelog for package tiago_pro_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 2.1.0 (2026-03-19)
 ------------------
 * Add support for short-wrist

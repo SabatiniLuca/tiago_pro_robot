@@ -2,6 +2,15 @@
 Changelog for package tiago_pro_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Fix dependencies condition
+* Remove cache + fix flake8
+* change paths for yaml
+* add dependency to package.xml
+* launch and config file of impedance controller
+* Contributors: sofieblankers, thomas.peyrucain, vivianamorlando
+
 2.1.0 (2026-03-19)
 ------------------
 * Do not launch torque estimation controllers with short-wrist
