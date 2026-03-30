@@ -17,10 +17,13 @@
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="tiago_pro">
 
+  <virtual_joint name="mobile_base_joint" type="planar" parent_frame="odom" child_link="base_footprint"/>
+
   <!-- ARGUMENTS -->
 
   <!-- no-laser, sick-571-->
-  <xacro:arg name="laser_model" default="sick-571"/>
+  <xacro:arg name="laser_model" default="sick-561"/>
+  <!-- maybe to keep the 571 laser model -->
 
   <!-- tiago-pro, no-arm -->
   <xacro:arg name="arm_type_left" default="tiago-pro" />
